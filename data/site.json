@@ -1,0 +1,814 @@
+{
+  "logos": {
+    "nav": "logos/logo-k-brand.png",
+    "footer": "logos/logo-k-brand.png",
+    "hero": "logos/logo-k-brand.png",
+    "favicon": "logos/logo-k-brand.png",
+    "primary": "logos/logo-k-brand.png",
+    "onDark": "logos/logo-k-brand-on-dark.png",
+    "onLight": "logos/logo-k-brand-on-light.png",
+    "monochromeWhite": "logos/logo-k-monochrome-white-transparent.png",
+    "monochromeDark": "logos/logo-k-monochrome-dark-transparent.png"
+  },
+  "contact": {
+    "email": "koyra.com@gmail.com",
+    "phone": "+223 77 01 08 08",
+    "address": "Bamako, Mali",
+    "social": {
+      "facebook": "https://www.facebook.com/koyrasoft"
+    },
+    "formScriptUrl": "https://script.google.com/macros/s/AKfycbzYf9XCFJy4aU0k8snn-YVxHsTlfw8NFb99ZWGgBbJzEWEBI2c98c_ncZqljW-kWWlK/exec"
+  },
+  "fr": {
+    "meta": {
+      "title": "Koyrasoft — Développement web, mobile & logiciels sur mesure",
+      "description": "Koyrasoft — Développement web, mobile et logiciels sur mesure. Sites web, applications mobiles, plateformes de gestion et solutions IA pour entreprises, écoles et institutions."
+    },
+    "company": {
+      "name": "Koyrasoft",
+      "slogan": "Votre partenaire digital pour créer, automatiser et grandir.",
+      "tagline": "Koyrasoft développe des sites web, applications mobiles et logiciels sur mesure pour aider les entreprises et organisations à digitaliser, automatiser et développer leurs activités.",
+      "description": "Koyrasoft est spécialisée dans le développement de logiciels, sites web, applications mobiles et solutions numériques sur mesure.",
+      "officialDescription": "Agence de développement logiciel et web, Koyrasoft accompagne entreprises, institutions, écoles, ONG, commerces et entrepreneurs dans leur transformation digitale.",
+      "role": "Nous ne nous contentons pas de livrer des sites internet : nous transformons vos idées, vos problèmes et vos besoins en solutions numériques concrètes, utiles et évolutives.",
+      "domain": "koyrasoft.net"
+    },
+    "hero": {
+      "badge": "Web · Mobile · Logiciels · IA",
+      "headline": "Vos idées méritent des",
+      "headlineAccent": "solutions qui durent.",
+      "lead": "Nous transformons vos idées en sites web, applications mobiles et logiciels sur mesure — conçus pour digitaliser, automatiser et faire grandir votre organisation.",
+      "ctaPrimary": "Lancer votre projet",
+      "ctaSecondary": "Voir nos réalisations",
+      "trustPills": [
+        "Afrique & international",
+        "Sur mesure & évolutif",
+        "Du prototype au déploiement",
+        "Support & maintenance"
+      ],
+      "metrics": [
+        { "value": "01", "label": "Besoin cadré" },
+        { "value": "02", "label": "Produit conçu" },
+        { "value": "03", "label": "Solution livrée" }
+      ]
+    },
+    "codeSnippet": [
+      "<span class=\"gold\">const</span> mission = <span class=\"blue\">Koyrasoft</span>.build({",
+      "&nbsp;&nbsp;goal: <span class=\"cyan\">\"digitaliser & automatiser\"</span>,",
+      "&nbsp;&nbsp;stack: <span class=\"cyan\">\"web + mobile + IA\"</span>,",
+      "&nbsp;&nbsp;focus: <span class=\"cyan\">\"impact réel, long terme\"</span>",
+      "});"
+    ],
+    "stats": [
+      { "value": "7+", "label": "Domaines d'expertise" },
+      { "value": "360°", "label": "Du design au support" },
+      { "value": "100%", "label": "Solutions sur mesure" },
+      { "value": "Afrique", "label": "& international" }
+    ],
+    "sections": {
+      "about": {
+        "label": "Qui sommes-nous",
+        "title": "Votre partenaire technologique de confiance.",
+        "subtitle": "Nous concevons, développons, maintenons et faisons évoluer des outils numériques utiles — pour accompagner les organisations qui veulent structurer leur transformation digitale."
+      },
+      "values": {
+        "label": "Nos engagements",
+        "title": "Ce qui guide chaque projet.",
+        "subtitle": "Des principes simples pour livrer des solutions utiles, fiables et adaptées à vos réalités."
+      },
+      "services": {
+        "label": "Nos expertises",
+        "title": "Tout ce qu'il faut pour bâtir votre écosystème digital.",
+        "subtitle": "Du site vitrine à la plateforme métier complète, nous couvrons l'ensemble du cycle de vie de votre produit : stratégie, design, développement, déploiement et amélioration continue."
+      },
+      "digitalServices": {
+        "label": "Services digitaux",
+        "title": "Accompagner votre transformation, de la stratégie à l'exploitation.",
+        "subtitle": "Au-delà du code, Koyrasoft vous aide à structurer votre présence numérique, automatiser vos processus et faire évoluer vos outils dans la durée."
+      },
+      "projects": {
+        "label": "Projets réalisés",
+        "title": "Des produits concrets, déjà en mains des utilisateurs.",
+        "subtitle": "Découvrez quelques réalisations de Koyrasoft — applications mobiles, plateformes et outils digitaux développés pour répondre à de vrais besoins."
+      },
+      "solutions": {
+        "label": "Pour qui ?",
+        "title": "Un partenaire tech au service de vos projets.",
+        "subtitle": "Des solutions robustes et sur mesure pour digitaliser vos activités, automatiser vos processus et accélérer votre croissance.",
+        "showcaseTitle": "Du besoin terrain au produit en production.",
+        "showcaseText": "Gestion scolaire, e-commerce, CRM, marketplace, applications mobiles, tableaux de bord, facturation, suivi client ou automatisation IA — nous construisons des outils alignés sur vos processus réels, pas sur des modèles génériques.",
+        "showcaseImage": "images/motivaction/screenshot-statistiques.png",
+        "showcaseImageAlt": "Capture d'écran Motiv'Action — statistiques de discipline"
+      },
+      "process": {
+        "label": "Notre méthode",
+        "title": "De l'idée au produit, sans zone d'ombre.",
+        "subtitle": "Une démarche structurée pour cadrer rapidement, construire proprement et livrer un outil que vos équipes adoptent vraiment au quotidien."
+      },
+      "cta": {
+        "label": "Parlons de votre projet",
+        "title": "Un site, une application ou un logiciel à développer ?",
+        "subtitle": "Décrivez-nous votre besoin en quelques lignes. Nous revenons vers vous avec une proposition claire, un planning réaliste et un devis adapté à votre contexte.",
+        "button": "Nous contacter",
+        "viewServices": "Explorer nos expertises",
+        "viewProjects": "Voir nos projets"
+      },
+      "tech": {
+        "label": "Stack & technologies"
+      }
+    },
+    "featuredProject": {
+      "label": "Projet phare",
+      "name": "Motiv'Action",
+      "description": "Application mobile de discipline & suivi de vie",
+      "logo": "images/motivaction/logo_c_sans_background.png",
+      "href": "#project-motivaction"
+    },
+    "values": [
+      {
+        "icon": "◎",
+        "title": "Utile avant tout",
+        "description": "Chaque fonctionnalité doit résoudre un vrai problème — pas de sur-ingénierie ni de gadgets inutiles."
+      },
+      {
+        "icon": "◈",
+        "title": "Sur mesure & évolutif",
+        "description": "Des bases propes, pensées pour grandir avec votre activité, vos équipes et vos nouveaux besoins."
+      },
+      {
+        "icon": "✦",
+        "title": "Accompagnement durable",
+        "description": "De la conception à la maintenance, nous restons présents pour faire vivre et améliorer vos outils."
+      }
+    ],
+    "techStack": [
+      "HTML · CSS · JavaScript",
+      "React · Next.js",
+      "Flutter · Android",
+      "Node.js · Python",
+      "PostgreSQL · Firebase",
+      "API REST · Cloud",
+      "IA & automatisation"
+    ],
+    "ctaPoints": [
+      "Réponse sous 24 h ouvrées",
+      "Devis clair et détaillé",
+      "Accompagnement de A à Z"
+    ],
+    "about": [
+      {
+        "icon": "◎",
+        "title": "Notre mission",
+        "description": "Rendre la technologie plus accessible, plus utile et plus adaptée aux réalités des entreprises africaines et internationales."
+      },
+      {
+        "icon": "✦",
+        "title": "Notre vision",
+        "description": "Devenir une référence africaine dans la création de solutions numériques simples, fiables et professionnelles."
+      },
+      {
+        "icon": "⬡",
+        "title": "Notre approche",
+        "description": "Nous partons du problème réel : digitaliser vos activités, automatiser vos tâches, mieux gérer vos clients et améliorer votre productivité avec des outils conçus pour durer."
+      }
+    ],
+    "services": [
+      {
+        "id": "web",
+        "icon": "⌘",
+        "title": "Sites web professionnels",
+        "description": "Sites vitrines, institutionnels, portfolios, blogs, landing pages et présences en ligne premium — conçus pour inspirer confiance et convertir."
+      },
+      {
+        "id": "webapp",
+        "icon": "▣",
+        "title": "Applications web",
+        "description": "CRM, tableaux de bord, outils RH, plateformes internes et logiciels de gestion accessibles depuis le navigateur, partout."
+      },
+      {
+        "id": "mobile",
+        "icon": "◈",
+        "title": "Applications mobiles",
+        "description": "Applications Android et iOS pour l'éducation, le commerce, la santé, la logistique, la productivité et les services de terrain."
+      },
+      {
+        "id": "ai",
+        "icon": "✦",
+        "title": "IA & automatisation",
+        "description": "Chatbots, assistants IA, génération de rapports, analyse de données et automatisation des tâches répétitives pour gagner du temps."
+      },
+      {
+        "id": "software",
+        "icon": "⬡",
+        "title": "Logiciels sur mesure",
+        "description": "Gestion d'école, stock, facturation, suivi client, projets, employés et reporting — adaptés à vos règles métier et à votre organisation."
+      },
+      {
+        "id": "ecommerce",
+        "icon": "◉",
+        "title": "E-commerce & marketplace",
+        "description": "Boutiques en ligne, catalogues, commandes, paiements, gestion vendeurs et livraison pour vendre et scaler sereinement."
+      },
+      {
+        "id": "maintenance",
+        "icon": "◎",
+        "title": "Maintenance & support",
+        "description": "Corrections, mises à jour, hébergement, sécurité, sauvegardes et accompagnement technique pour garder vos outils performants."
+      }
+    ],
+    "digitalServices": [
+      {
+        "icon": "◈",
+        "title": "Stratégie & conseil digital",
+        "description": "Audit de votre existant, définition de la feuille de route, choix des technologies et priorisation des fonctionnalités à fort impact."
+      },
+      {
+        "icon": "✦",
+        "title": "Design UX/UI",
+        "description": "Maquettes, parcours utilisateur, identité visuelle et interfaces modernes pensées pour le web et le mobile."
+      },
+      {
+        "icon": "⌘",
+        "title": "Développement web & mobile",
+        "description": "Sites, applications Android/iOS, API et backends — du prototype au produit prêt pour la production."
+      },
+      {
+        "icon": "▣",
+        "title": "Plateformes & logiciels métier",
+        "description": "CRM, ERP léger, gestion scolaire, e-commerce, tableaux de bord et outils internes adaptés à vos processus."
+      },
+      {
+        "icon": "⬡",
+        "title": "Automatisation & IA",
+        "description": "Chatbots, assistants intelligents, génération de rapports et automatisation des tâches répétitives."
+      },
+      {
+        "icon": "◎",
+        "title": "Hébergement, maintenance & évolution",
+        "description": "Mise en ligne, sécurité, sauvegardes, corrections et améliorations continues pour garder vos outils performants."
+      }
+    ],
+    "projects": [
+      {
+        "id": "motivaction",
+        "name": "Motiv'Action",
+        "tagline": "Discipline. Progress. Growth.",
+        "category": "Application mobile Android",
+        "year": "2025",
+        "logo": "images/motivaction/logo_c_sans_background.png",
+        "description": "Motiv'Action est une application de discipline personnelle et de suivi de vie, conçue en architecture local-first. Elle centralise plusieurs modules pour accompagner l'utilisateur au quotidien — de la santé à la spiritualité, en passant par le don de sang.",
+        "highlights": [
+          "Mode local : données privées, sans serveur central",
+          "7 piliers de discipline avec score quotidien",
+          "Interface moderne, modulaire et intuitive"
+        ],
+        "modules": [
+          "PrayTracker · suivi des prières",
+          "MoodTracker · suivi de l'humeur",
+          "HealthTracker · suivi santé",
+          "Kalis90 · activité physique",
+          "BookFocus · lecture & concentration",
+          "CareTracker · suivi des proches",
+          "RedHope · don de sang & solidarité"
+        ],
+        "tags": ["Android", "Mobile", "Local-first", "Santé", "Productivité"],
+        "screenshots": [
+          {
+            "src": "images/motivaction/screenshot-menu.png",
+            "caption": "Menu & modules intégrés"
+          },
+          {
+            "src": "images/motivaction/screenshot-statistiques.png",
+            "caption": "Score de discipline & statistiques"
+          },
+          {
+            "src": "images/motivaction/screenshot-redhope.png",
+            "caption": "RedHope — don de sang"
+          }
+        ]
+      },
+      {
+        "id": "souvenir-puzzle",
+        "name": "Souvenir Puzzle",
+        "tagline": "Chaque pièce raconte une histoire.",
+        "category": "Application mobile · Jeu puzzle",
+        "year": "2026",
+        "logo": "images/souvenir_puzzle/logo-app.png",
+        "description": "Souvenir Puzzle transforme vos photos personnelles en puzzles à reconstituer. L'application propose plusieurs niveaux de difficulté, un suivi de progression détaillé et une expérience pensée pour préserver vos souvenirs — le tout en local, sans envoi de vos images.",
+        "highlights": [
+          "Puzzles créés à partir de vos propres photos",
+          "6 niveaux de difficulté avec déblocage progressif",
+          "Statistiques, séries et suivi de régularité"
+        ],
+        "modules": [
+          "Galerie · vos souvenirs en puzzles",
+          "Niveaux · Facile à Grand Maître",
+          "Profils · multi-utilisateurs",
+          "Statistiques · progression & tendances",
+          "Thème · clair, sombre ou système",
+          "Langues · français & anglais"
+        ],
+        "tags": ["Android", "Mobile", "Jeu", "Photos", "Local-first"],
+        "screenshots": [
+          {
+            "src": "images/souvenir_puzzle/screenshot-gallery.png",
+            "caption": "Galerie de souvenirs"
+          },
+          {
+            "src": "images/souvenir_puzzle/screenshot-stats.png",
+            "caption": "Statistiques & progression"
+          },
+          {
+            "src": "images/souvenir_puzzle/screenshot-settings.png",
+            "caption": "Paramètres & confidentialité"
+          }
+        ]
+      }
+    ],
+    "solutions": [
+      {
+        "title": "Organisations & groupes",
+        "description": "Plateformes numériques sur mesure : sites, applications et outils métier pour structurer vos opérations."
+      },
+      {
+        "title": "Entreprises & commerces",
+        "description": "Présence web, gestion commerciale, automatisation, e-commerce et outils internes pour structurer votre croissance."
+      },
+      {
+        "title": "Startups & entrepreneurs",
+        "description": "Prototype, MVP, design produit, développement rapide et accompagnement technique pour passer de l'idée au marché."
+      },
+      {
+        "title": "Écoles & institutions",
+        "description": "Plateformes de gestion scolaire, portails institutionnels et outils de suivi pour moderniser vos opérations."
+      },
+      {
+        "title": "ONG & associations",
+        "description": "Outils de suivi, reporting, communication et gestion adaptés aux réalités du secteur associatif."
+      }
+    ],
+    "process": [
+      {
+        "title": "Comprendre",
+        "description": "Écoute du besoin, analyse des utilisateurs, du contexte métier et des objectifs business à atteindre."
+      },
+      {
+        "title": "Concevoir",
+        "description": "Architecture technique, maquettes, parcours utilisateur et choix technologiques validés avec vous."
+      },
+      {
+        "title": "Développer",
+        "description": "Construction itérative du site, de l'application ou du logiciel sur une base propre et maintenable."
+      },
+      {
+        "title": "Tester",
+        "description": "Contrôles mobile, performance, sécurité, correction des bugs et validation de l'expérience utilisateur."
+      },
+      {
+        "title": "Lancer & faire évoluer",
+        "description": "Mise en production, formation des équipes, maintenance et améliorations continues selon vos retours."
+      }
+    ],
+    "navigation": [
+      { "label": "À propos", "href": "#about" },
+      { "label": "Expertises", "href": "#services" },
+      { "label": "Digital", "href": "#digital-services" },
+      { "label": "Projets", "href": "#projects" },
+      { "label": "Méthode", "href": "#process" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "footer": {
+      "tagline": "Nous créons des outils digitaux fiables, modernes et adaptés à vos enjeux.",
+      "description": "Koyrasoft conçoit et développe des sites web, applications mobiles et logiciels sur mesure pour entreprises, institutions et entrepreneurs. De la stratégie au déploiement, nous accompagnons votre transformation digitale avec des solutions utiles, évolutives et pensées pour durer.",
+      "navTitle": "Navigation",
+      "contactTitle": "Nous joindre",
+      "socialTitle": "Réseaux sociaux",
+      "copyright": "Koyrasoft — Tous droits réservés."
+    },
+    "form": {
+      "title": "Demande de devis",
+      "note": "Quelques informations suffisent pour démarrer. Nous vous recontactons rapidement.",
+      "nameLabel": "Nom complet",
+      "namePlaceholder": "Prénom et nom",
+      "emailLabel": "Email professionnel",
+      "emailPlaceholder": "vous@entreprise.com",
+      "phoneLabel": "Téléphone (optionnel)",
+      "phonePlaceholder": "+223 77 00 00 00",
+      "companyLabel": "Entreprise (optionnel)",
+      "companyPlaceholder": "Nom de votre organisation",
+      "subjectLabel": "Type de projet",
+      "subjectPlaceholder": "Site web, application mobile, logiciel de gestion...",
+      "messageLabel": "Votre besoin",
+      "messagePlaceholder": "Décrivez votre projet, vos objectifs et votre délai souhaité...",
+      "fileLabel": "Fichier joint (optionnel)",
+      "fileHint": "PDF, Word, ZIP… — 10 Mo maximum",
+      "fileTooLarge": "Le fichier dépasse 10 Mo. Choisissez un fichier plus léger ou envoyez-le par email.",
+      "submit": "Envoyer ma demande",
+      "sending": "Envoi en cours…",
+      "success": "Merci ! Votre message a bien été envoyé. Une copie vous a été envoyée par email. Nous vous répondrons sous 24 h.",
+      "error": "L'envoi a échoué. Réessayez ou écrivez-nous directement à koyra.com@gmail.com.",
+      "errorFile": "Le formulaire ne fonctionne pas en fichier local. Ouvrez le site via un serveur web (ex. localhost ou koyrasoft.net).",
+      "errorActivation": "Le formulaire doit être activé : consultez koyra.com@gmail.com et cliquez sur le lien « Activate Form », puis réessayez.",
+      "defaultSubject": "Demande de devis",
+      "autoresponseGreeting": "Bonjour {name},",
+      "autoresponseIntro": "Merci pour votre demande adressée à Koyrasoft. Voici une copie de votre message :",
+      "autoresponseOutro": "Nous l'examinons et vous recontacterons sous 24 h ouvrées.\n\nL'équipe Koyrasoft\nkoyrasoft.net"
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "Koyrasoft — Custom web, mobile & software development",
+      "description": "Koyrasoft — Custom web, mobile and software development. Websites, mobile apps, management platforms and AI solutions for businesses, schools and institutions."
+    },
+    "company": {
+      "name": "Koyrasoft",
+      "slogan": "Your digital partner to build, automate and grow.",
+      "tagline": "Koyrasoft builds websites, mobile apps and custom software to help businesses and organizations digitize, automate and scale their operations.",
+      "description": "Koyrasoft specializes in software development, websites, mobile applications and tailored digital solutions.",
+      "officialDescription": "As a software and web development agency, Koyrasoft supports businesses, institutions, schools, NGOs, retailers and entrepreneurs in their digital transformation.",
+      "role": "We don't just deliver websites: we turn your ideas, challenges and organizational needs into concrete, useful and scalable digital solutions.",
+      "domain": "koyrasoft.net"
+    },
+    "hero": {
+      "badge": "Web · Mobile · Software · AI",
+      "headline": "Your ideas deserve",
+      "headlineAccent": "solutions that last.",
+      "lead": "We turn your ideas into websites, mobile apps and custom software — built to digitize, automate and grow your organization.",
+      "ctaPrimary": "Start your project",
+      "ctaSecondary": "View our work",
+      "trustPills": [
+        "Africa & international",
+        "Custom & scalable",
+        "From prototype to launch",
+        "Support & maintenance"
+      ],
+      "metrics": [
+        { "value": "01", "label": "Scope defined" },
+        { "value": "02", "label": "Product designed" },
+        { "value": "03", "label": "Solution delivered" }
+      ]
+    },
+    "codeSnippet": [
+      "<span class=\"gold\">const</span> mission = <span class=\"blue\">Koyrasoft</span>.build({",
+      "&nbsp;&nbsp;goal: <span class=\"cyan\">\"digitize & automate\"</span>,",
+      "&nbsp;&nbsp;stack: <span class=\"cyan\">\"web + mobile + AI\"</span>,",
+      "&nbsp;&nbsp;focus: <span class=\"cyan\">\"real impact, long term\"</span>",
+      "});"
+    ],
+    "stats": [
+      { "value": "7+", "label": "Areas of expertise" },
+      { "value": "360°", "label": "From design to support" },
+      { "value": "100%", "label": "Custom solutions" },
+      { "value": "Africa", "label": "& international" }
+    ],
+    "sections": {
+      "about": {
+        "label": "Who we are",
+        "title": "Your trusted technology partner.",
+        "subtitle": "We design, build, maintain and evolve useful digital tools — helping organizations structure their digital transformation."
+      },
+      "values": {
+        "label": "Our commitments",
+        "title": "What guides every project.",
+        "subtitle": "Simple principles to deliver useful, reliable solutions aligned with your reality."
+      },
+      "services": {
+        "label": "Our expertise",
+        "title": "Everything you need to build your digital ecosystem.",
+        "subtitle": "From corporate websites to full business platforms, we cover the entire product lifecycle: strategy, design, development, deployment and continuous improvement."
+      },
+      "digitalServices": {
+        "label": "Digital services",
+        "title": "Supporting your transformation, from strategy to operations.",
+        "subtitle": "Beyond code, Koyrasoft helps you structure your digital presence, automate processes and evolve your tools over time."
+      },
+      "projects": {
+        "label": "Completed projects",
+        "title": "Real products, already in users' hands.",
+        "subtitle": "Explore Koyrasoft deliverables — mobile apps, platforms and digital tools built to solve real-world needs."
+      },
+      "solutions": {
+        "label": "Who we serve",
+        "title": "A tech partner for your projects.",
+        "subtitle": "Robust, tailored solutions to digitize your operations, automate processes and accelerate growth.",
+        "showcaseTitle": "From real-world needs to production-ready products.",
+        "showcaseText": "School management, e-commerce, CRM, marketplaces, mobile apps, dashboards, billing, customer tracking or AI automation — we build tools aligned with your actual workflows, not generic templates.",
+        "showcaseImage": "images/motivaction/screenshot-statistiques.png",
+        "showcaseImageAlt": "Motiv'Action app screenshot — discipline statistics"
+      },
+      "process": {
+        "label": "Our process",
+        "title": "From idea to product, with full clarity.",
+        "subtitle": "A structured approach to scope quickly, build cleanly and deliver tools your teams actually use every day."
+      },
+      "cta": {
+        "label": "Let's talk",
+        "title": "Need a website, app or custom software?",
+        "subtitle": "Tell us about your project in a few lines. We'll get back to you with a clear proposal, realistic timeline and quote tailored to your context.",
+        "button": "Contact us",
+        "viewServices": "Explore our expertise",
+        "viewProjects": "View our projects"
+      },
+      "tech": {
+        "label": "Stack & technologies"
+      }
+    },
+    "featuredProject": {
+      "label": "Featured project",
+      "name": "Motiv'Action",
+      "description": "Mobile app for discipline & life tracking",
+      "logo": "images/motivaction/logo_c_sans_background.png",
+      "href": "#project-motivaction"
+    },
+    "values": [
+      {
+        "icon": "◎",
+        "title": "Useful first",
+        "description": "Every feature must solve a real problem — no over-engineering or pointless gimmicks."
+      },
+      {
+        "icon": "◈",
+        "title": "Custom & scalable",
+        "description": "Clean foundations designed to grow with your business, teams and evolving needs."
+      },
+      {
+        "icon": "✦",
+        "title": "Long-term support",
+        "description": "From design to maintenance, we stay with you to keep your tools alive and improving."
+      }
+    ],
+    "techStack": [
+      "HTML · CSS · JavaScript",
+      "React · Next.js",
+      "Flutter · Android",
+      "Node.js · Python",
+      "PostgreSQL · Firebase",
+      "REST API · Cloud",
+      "AI & automation"
+    ],
+    "ctaPoints": [
+      "Reply within 24 business hours",
+      "Clear, detailed quote",
+      "End-to-end guidance"
+    ],
+    "about": [
+      {
+        "icon": "◎",
+        "title": "Our mission",
+        "description": "Make technology more accessible, useful and aligned with the realities of African and international businesses."
+      },
+      {
+        "icon": "✦",
+        "title": "Our vision",
+        "description": "Become an African reference for simple, reliable and professional digital solutions."
+      },
+      {
+        "icon": "⬡",
+        "title": "Our approach",
+        "description": "We start from real problems: digitize your operations, automate repetitive tasks, manage customers better and boost productivity with tools built to last."
+      }
+    ],
+    "services": [
+      {
+        "id": "web",
+        "icon": "⌘",
+        "title": "Professional websites",
+        "description": "Corporate sites, institutional portals, portfolios, blogs and premium landing pages — designed to build trust and drive results."
+      },
+      {
+        "id": "webapp",
+        "icon": "▣",
+        "title": "Web applications",
+        "description": "CRM, dashboards, HR tools, internal platforms and browser-based management software accessible from anywhere."
+      },
+      {
+        "id": "mobile",
+        "icon": "◈",
+        "title": "Mobile applications",
+        "description": "Android and iOS apps for education, commerce, healthcare, logistics, productivity and field services."
+      },
+      {
+        "id": "ai",
+        "icon": "✦",
+        "title": "AI & automation",
+        "description": "Chatbots, AI assistants, automated reporting, data analysis and workflow automation to save time and reduce manual work."
+      },
+      {
+        "id": "software",
+        "icon": "⬡",
+        "title": "Custom software",
+        "description": "School management, inventory, billing, customer tracking, projects, HR and reporting — tailored to your business rules."
+      },
+      {
+        "id": "ecommerce",
+        "icon": "◉",
+        "title": "E-commerce & marketplace",
+        "description": "Online stores, catalogs, orders, payments, vendor management and delivery to sell and scale with confidence."
+      },
+      {
+        "id": "maintenance",
+        "icon": "◎",
+        "title": "Maintenance & support",
+        "description": "Bug fixes, updates, hosting, security, backups and technical support to keep your tools running smoothly."
+      }
+    ],
+    "digitalServices": [
+      {
+        "icon": "◈",
+        "title": "Digital strategy & consulting",
+        "description": "Audit your current setup, define your roadmap, choose the right technologies and prioritize high-impact features."
+      },
+      {
+        "icon": "✦",
+        "title": "UX/UI design",
+        "description": "Mockups, user flows, visual identity and modern interfaces designed for web and mobile."
+      },
+      {
+        "icon": "⌘",
+        "title": "Web & mobile development",
+        "description": "Websites, Android/iOS apps, APIs and backends — from prototype to production-ready product."
+      },
+      {
+        "icon": "▣",
+        "title": "Platforms & business software",
+        "description": "CRM, lightweight ERP, school management, e-commerce, dashboards and internal tools tailored to your workflows."
+      },
+      {
+        "icon": "⬡",
+        "title": "Automation & AI",
+        "description": "Chatbots, intelligent assistants, automated reporting and repetitive task automation."
+      },
+      {
+        "icon": "◎",
+        "title": "Hosting, maintenance & evolution",
+        "description": "Deployment, security, backups, bug fixes and continuous improvements to keep your tools performing."
+      }
+    ],
+    "projects": [
+      {
+        "id": "motivaction",
+        "name": "Motiv'Action",
+        "tagline": "Discipline. Progress. Growth.",
+        "category": "Android mobile application",
+        "year": "2025",
+        "logo": "images/motivaction/logo_c_sans_background.png",
+        "description": "Motiv'Action is a personal discipline and life-tracking app built on a local-first architecture. It brings together multiple modules to support users daily — from health and spirituality to blood donation.",
+        "highlights": [
+          "Local mode: private data, no central server",
+          "7 discipline pillars with daily scoring",
+          "Modern, modular and intuitive interface"
+        ],
+        "modules": [
+          "PrayTracker · prayer tracking",
+          "MoodTracker · mood tracking",
+          "HealthTracker · health monitoring",
+          "Kalis90 · physical activity",
+          "BookFocus · reading & focus",
+          "CareTracker · caring for loved ones",
+          "RedHope · blood donation & solidarity"
+        ],
+        "tags": ["Android", "Mobile", "Local-first", "Health", "Productivity"],
+        "screenshots": [
+          {
+            "src": "images/motivaction/screenshot-menu.png",
+            "caption": "Menu & integrated modules"
+          },
+          {
+            "src": "images/motivaction/screenshot-statistiques.png",
+            "caption": "Discipline score & statistics"
+          },
+          {
+            "src": "images/motivaction/screenshot-redhope.png",
+            "caption": "RedHope — blood donation"
+          }
+        ]
+      },
+      {
+        "id": "souvenir-puzzle",
+        "name": "Souvenir Puzzle",
+        "tagline": "Every piece tells a story.",
+        "category": "Mobile app · Puzzle game",
+        "year": "2026",
+        "logo": "images/souvenir_puzzle/logo-app.png",
+        "description": "Souvenir Puzzle turns your personal photos into puzzles to solve. The app offers multiple difficulty levels, detailed progress tracking and a experience designed to preserve your memories — all locally, with no photo uploads.",
+        "highlights": [
+          "Puzzles built from your own photos",
+          "6 difficulty levels with progressive unlock",
+          "Statistics, streaks and consistency tracking"
+        ],
+        "modules": [
+          "Gallery · your memories as puzzles",
+          "Levels · Easy to Grand Master",
+          "Profiles · multi-user support",
+          "Statistics · progress & trends",
+          "Theme · light, dark or system",
+          "Languages · French & English"
+        ],
+        "tags": ["Android", "Mobile", "Game", "Photos", "Local-first"],
+        "screenshots": [
+          {
+            "src": "images/souvenir_puzzle/screenshot-gallery.png",
+            "caption": "Memories gallery"
+          },
+          {
+            "src": "images/souvenir_puzzle/screenshot-stats.png",
+            "caption": "Statistics & progress"
+          },
+          {
+            "src": "images/souvenir_puzzle/screenshot-settings.png",
+            "caption": "Settings & privacy"
+          }
+        ]
+      }
+    ],
+    "solutions": [
+      {
+        "title": "Organizations & groups",
+        "description": "Tailored digital platforms: websites, applications and business tools to structure your operations."
+      },
+      {
+        "title": "Businesses & retailers",
+        "description": "Web presence, sales management, automation, e-commerce and internal tools to structure your growth."
+      },
+      {
+        "title": "Startups & entrepreneurs",
+        "description": "Prototypes, MVPs, product design, rapid development and technical guidance to go from idea to market."
+      },
+      {
+        "title": "Schools & institutions",
+        "description": "School management platforms, institutional portals and tracking tools to modernize your operations."
+      },
+      {
+        "title": "NGOs & associations",
+        "description": "Tracking, reporting, communication and management tools adapted to the nonprofit sector."
+      }
+    ],
+    "process": [
+      {
+        "title": "Understand",
+        "description": "Listen to your needs, analyze users, business context and the goals you want to achieve."
+      },
+      {
+        "title": "Design",
+        "description": "Technical architecture, mockups, user flows and technology choices validated with you."
+      },
+      {
+        "title": "Build",
+        "description": "Iterative development of your website, app or software on a clean, maintainable foundation."
+      },
+      {
+        "title": "Test",
+        "description": "Mobile checks, performance, security, bug fixes and user experience validation."
+      },
+      {
+        "title": "Launch & evolve",
+        "description": "Go live, team training, maintenance and continuous improvements based on your feedback."
+      }
+    ],
+    "navigation": [
+      { "label": "About", "href": "#about" },
+      { "label": "Expertise", "href": "#services" },
+      { "label": "Digital", "href": "#digital-services" },
+      { "label": "Projects", "href": "#projects" },
+      { "label": "Process", "href": "#process" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "footer": {
+      "tagline": "We build reliable, modern digital tools tailored to your needs.",
+      "description": "Koyrasoft designs and develops custom websites, mobile apps and software for businesses, institutions and entrepreneurs. From strategy to deployment, we support your digital transformation with useful, scalable solutions built to last.",
+      "navTitle": "Navigation",
+      "contactTitle": "Get in touch",
+      "socialTitle": "Social",
+      "copyright": "Koyrasoft — All rights reserved."
+    },
+    "form": {
+      "title": "Quote request",
+      "note": "A few details are enough to get started. We'll get back to you quickly.",
+      "nameLabel": "Full name",
+      "namePlaceholder": "First and last name",
+      "emailLabel": "Work email",
+      "emailPlaceholder": "you@company.com",
+      "phoneLabel": "Phone (optional)",
+      "phonePlaceholder": "+223 77 00 00 00",
+      "companyLabel": "Company (optional)",
+      "companyPlaceholder": "Your organization name",
+      "subjectLabel": "Project type",
+      "subjectPlaceholder": "Website, mobile app, management software...",
+      "messageLabel": "Your needs",
+      "messagePlaceholder": "Describe your project, goals and desired timeline...",
+      "fileLabel": "Attachment (optional)",
+      "fileHint": "PDF, Word, ZIP… — 10 MB max",
+      "fileTooLarge": "File exceeds 10 MB. Choose a smaller file or email it to us directly.",
+      "submit": "Send my request",
+      "sending": "Sending…",
+      "success": "Thank you! Your message has been sent. A copy has been emailed to you. We'll reply within 24 hours.",
+      "error": "Sending failed. Please try again or email us directly at koyra.com@gmail.com.",
+      "errorFile": "The form does not work when opened as a local file. Please use a web server (e.g. localhost or koyrasoft.net).",
+      "errorActivation": "The form must be activated: check koyra.com@gmail.com and click the « Activate Form » link, then try again.",
+      "defaultSubject": "Quote request",
+      "autoresponseGreeting": "Hello {name},",
+      "autoresponseIntro": "Thank you for contacting Koyrasoft. Here is a copy of your message:",
+      "autoresponseOutro": "We're reviewing it and will get back to you within 24 business hours.\n\nThe Koyrasoft team\nkoyrasoft.net"
+    }
+  }
+}

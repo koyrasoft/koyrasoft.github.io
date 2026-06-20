@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Koyrasoft — Développement web, mobile et logiciels sur mesure pour entreprises et institutions.">
+  <meta name="theme-color" content="#05070d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Koyrasoft — Software & Web Solutions">
+  <meta property="og:description" content="Sites web, applications mobiles et logiciels sur mesure pour entreprises et institutions.">
+  <meta property="og:locale" content="fr_FR">
+  <title>Koyrasoft — Software & Web Solutions</title>
+  <link rel="icon" type="image/png" href="logos/logo-k-brand.png" id="favicon" data-logo="favicon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#accueil">Aller au contenu</a>
+
+  <div class="noise" aria-hidden="true"></div>
+  <div class="halo halo--one" aria-hidden="true"></div>
+  <div class="halo halo--two" aria-hidden="true"></div>
+
+  <header class="topbar" id="header">
+    <nav class="nav page-shell" aria-label="Navigation principale">
+      <a href="#accueil" class="brand" aria-label="Koyrasoft — accueil">
+        <span class="logo-mark">
+          <img src="logos/logo-k-brand.png" alt="" width="32" height="32" id="logoNav" data-logo="nav">
+        </span>
+        <span class="brand-text">
+          <strong data-field="company.name">Koyrasoft</strong>
+        </span>
+      </a>
+
+      <div class="nav-links" id="navLinks"></div>
+
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button type="button" class="lang-switch__btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
+      <a class="nav-cta" href="#contact" data-field="hero.ctaPrimary" data-field-suffix="↗">Lancer un projet</a>
+      <button class="mobile-menu" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    </nav>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <div class="mobile-nav__panel page-shell">
+      <div class="mobile-nav__inner" id="mobileNavLinks"></div>
+      <div class="lang-switch lang-switch--mobile" role="group" aria-label="Langue">
+        <button type="button" class="lang-switch__btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-primary btn--full mobile-nav__cta" href="#contact" data-field="hero.ctaPrimary">Lancer un projet</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="hero section-block" id="accueil" aria-labelledby="hero-title">
+      <div class="hero-grid page-shell">
+        <div class="hero-content">
+          <h1 id="hero-title">
+            <span data-field="hero.headline">Vos idées méritent des</span>
+            <span class="gradient-word" data-field="hero.headlineAccent">solutions qui durent.</span>
+          </h1>
+          <p class="hero-slogan" data-field="company.slogan">Votre partenaire digital pour créer, automatiser et grandir.</p>
+          <p class="hero-copy" data-field="hero.lead">Nous transformons vos idées en sites web, applications mobiles et logiciels sur mesure.</p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary" data-field="hero.ctaPrimary" data-field-suffix="→">Lancer un projet</a>
+            <a href="#projects" class="btn btn-ghost" data-field="hero.ctaSecondary">Voir nos réalisations</a>
+          </div>
+
+          <div class="trust-row" id="trustPills" aria-label="Points forts"></div>
+
+          <a class="hero-featured" id="heroFeatured" href="#projects" hidden></a>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb"></div>
+          <div class="device-card">
+            <div class="window-bar">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <span data-field="company.domain">koyrasoft.net</span>
+            </div>
+            <div class="visual-panel">
+              <img class="giant-k" src="logos/logo-k-brand.png" alt="" id="logoHero" data-logo="hero">
+              <div class="metric-strip" id="heroMetrics"></div>
+              <div class="code-card" id="codeCard"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-band" aria-label="Chiffres clés">
+      <div class="page-shell stats-grid" id="statsGrid"></div>
+    </div>
+
+    <section id="about" class="section-block reveal" aria-labelledby="about-title">
+      <div class="page-shell">
+        <header class="section-head">
+          <div class="section-head__main">
+            <p class="label" data-field="sections.about.label">Qui sommes-nous</p>
+            <h2 id="about-title" data-field="sections.about.title"></h2>
+          </div>
+          <p class="section-head__aside" data-field="sections.about.subtitle"></p>
+        </header>
+        <div class="about-grid" id="aboutGrid"></div>
+      </div>
+    </section>
+
+    <section id="values" class="values-band section-block section-block--alt reveal" aria-labelledby="values-title">
+      <div class="page-shell">
+        <header class="section-head section-head--center">
+          <div class="section-head__main">
+            <p class="label" data-field="sections.values.label">Nos engagements</p>
+            <h2 id="values-title" data-field="sections.values.title"></h2>
+          </div>
+          <p class="section-head__aside section-head__aside--center" data-field="sections.values.subtitle"></p>
+        </header>
+        <div class="values-grid" id="valuesGrid"></div>
+      </div>
+    </section>
+
+    <section id="services" class="section-block reveal" aria-labelledby="services-title">
+      <div class="page-shell">
+        <header class="section-head">
+          <div class="section-head__main">
+            <p class="label" data-field="sections.services.label">Nos expertises</p>
+            <h2 id="services-title" data-field="sections.services.title"></h2>
+          </div>
+          <p class="section-head__aside" data-field="sections.services.subtitle"></p>
+        </header>
+        <div class="services-grid" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <section id="digital-services" class="section-block section-block--alt reveal" aria-labelledby="digital-title">
+      <div class="page-shell">
+        <header class="section-head">
+          <div class="section-head__main">
+            <p class="label" data-field="sections.digitalServices.label">Services digitaux</p>
+            <h2 id="digital-title" data-field="sections.digitalServices.title"></h2>
+          </div>
+          <p class="section-head__aside" data-field="sections.digitalServices.subtitle"></p>
+        </header>
+        <div class="digital-grid" id="digitalServicesGrid"></div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-block reveal" aria-labelledby="projects-title">
+      <div class="page-shell">
+        <header class="section-head">
+          <div class="section-head__main">
+            <p class="label" data-field="sections.projects.label">Projets réalisés</p>
+            <h2 id="projects-title" data-field="sections.projects.title"></h2>
+          </div>
+          <p class="section-head__aside" data-field="sections.projects.subtitle"></p>
+        </header>
+        <div class="projects-list" id="projectsList"></div>
+      </div>
+    </section>
+
+    <section id="solutions" class="section-block section-block--alt reveal" aria-labelledby="solutions-title">
+      <div class="page-shell">
+        <header class="section-head">
+          <div class="section-head__main">
+            <p class="label" data-field="sections.solutions.label">Pour qui ?</p>
+            <h2 id="solutions-title" data-field="sections.solutions.title"></h2>
+          </div>
+          <p class="section-head__aside" data-field="sections.solutions.subtitle"></p>
+        </header>
+
+        <div class="portfolio">
+          <article class="showcase">
+            <h3 data-field="sections.solutions.showcaseTitle"></h3>
+            <p data-field="sections.solutions.showcaseText"></p>
+            <div class="showcase-visual" id="showcaseVisual"></div>
+          </article>
+          <div class="side-stack" id="solutionsStack"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section-block reveal" aria-labelledby="process-title">
+      <div class="page-shell">
+        <header class="section-head">
+          <div class="section-head__main">
+            <p class="label" data-field="sections.process.label">Notre méthode</p>
+            <h2 id="process-title" data-field="sections.process.title"></h2>
+          </div>
+          <p class="section-head__aside" data-field="sections.process.subtitle"></p>
+        </header>
+        <div class="process-grid" id="processGrid"></div>
+      </div>
+    </section>
+
+    <div class="tech-band reveal" aria-label="Technologies">
+      <div class="page-shell">
+        <p class="tech-band__label" data-field="sections.tech.label">Stack & technologies</p>
+        <div class="tech-marquee" id="techStack"></div>
+      </div>
+    </div>
+
+    <section id="contact" class="cta-section section-block reveal" aria-labelledby="contact-title">
+      <div class="page-shell contact-layout">
+        <div class="cta-box">
+          <p class="label" data-field="sections.cta.label">Parlons de votre projet</p>
+          <h2 id="contact-title" data-field="sections.cta.title"></h2>
+          <p data-field="sections.cta.subtitle"></p>
+          <ul class="cta-points" id="ctaPoints"></ul>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary" id="contactEmailBtn">Nous contacter</a>
+            <a href="#projects" class="btn btn-ghost" data-field="sections.cta.viewProjects">Voir nos projets</a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_template" value="basic">
+          <input type="hidden" name="_subject" id="formSubject" value="">
+          <input type="hidden" name="_replyto" id="formReplyto" value="">
+          <input type="hidden" name="_cc" id="formCc" value="">
+          <input type="hidden" name="_next" id="formNext" value="">
+          <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <header class="contact-form__head">
+            <h3 data-field="form.title">Demande de devis</h3>
+            <p data-field="form.note"></p>
+          </header>
+          <div class="form-row">
+            <div class="field">
+              <label for="name" data-field="form.nameLabel">Nom</label>
+              <input type="text" id="name" name="name" required data-placeholder="form.namePlaceholder" placeholder="Votre nom" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="email" data-field="form.emailLabel">Email</label>
+              <input type="email" id="email" name="email" required data-placeholder="form.emailPlaceholder" placeholder="vous@entreprise.com" autocomplete="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="phone" data-field="form.phoneLabel">Téléphone</label>
+              <input type="tel" id="phone" name="telephone" data-placeholder="form.phonePlaceholder" placeholder="+223 77 00 00 00" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="company" data-field="form.companyLabel">Entreprise</label>
+              <input type="text" id="company" name="entreprise" data-placeholder="form.companyPlaceholder" placeholder="Nom de votre organisation" autocomplete="organization">
+            </div>
+          </div>
+          <div class="field">
+            <label for="subject" data-field="form.subjectLabel">Projet</label>
+            <input type="text" id="subject" name="subject" data-placeholder="form.subjectPlaceholder" placeholder="Site web, app mobile, ERP...">
+          </div>
+          <div class="field">
+            <label for="message" data-field="form.messageLabel">Message</label>
+            <textarea id="message" name="message" rows="4" required data-placeholder="form.messagePlaceholder" placeholder="Décrivez votre besoin..."></textarea>
+          </div>
+          <div class="field">
+            <label for="attachment" data-field="form.fileLabel">Fichier joint</label>
+            <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.zip,.rar,.7z,.odt,.txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/zip">
+            <p class="field__hint" data-field="form.fileHint">PDF, Word, ZIP… — 10 Mo max (optionnel)</p>
+          </div>
+          <button type="submit" class="btn btn-primary btn--full" data-field="form.submit" data-field-suffix="→">Envoyer ma demande</button>
+          <p class="form-msg" id="formFeedback" hidden role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top page-shell">
+      <div class="footer-brand">
+        <div class="footer-brand__head">
+          <span class="logo-mark logo-mark--sm">
+            <img src="logos/logo-k-brand.png" alt="" width="36" height="36" data-logo="footer">
+          </span>
+          <div>
+            <strong data-field="company.name">Koyrasoft</strong>
+            <span class="footer-brand__slogan" data-field="company.slogan"></span>
+          </div>
+        </div>
+        <p class="footer-tagline" data-field="footer.tagline"></p>
+        <p class="footer-description" data-field="footer.description"></p>
+      </div>
+      <div class="footer-contact" id="footerContact"></div>
+      <div class="footer-nav-col">
+        <h4 data-field="footer.navTitle">Navigation</h4>
+        <div class="footer-links" id="footerNav"></div>
+      </div>
+    </div>
+    <div class="footer-bottom page-shell">
+      <p>© <span id="year"></span> <span data-field="footer.copyright">Koyrasoft</span></p>
+    </div>
+  </footer>
+
+  <button type="button" class="scroll-top" id="scrollTop" aria-label="Retour en haut" hidden>↑</button>
+
+  <script src="data/site-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
