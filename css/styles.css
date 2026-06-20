@@ -1120,6 +1120,26 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #070707;
+  background: linear-gradient(135deg, var(--gold-light), #e7e9ee);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(217, 162, 42, 0.25);
 }
 
 .project-tag {

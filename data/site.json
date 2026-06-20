@@ -89,7 +89,8 @@
       "projects": {
         "label": "Projets réalisés",
         "title": "Des produits concrets, déjà en mains des utilisateurs.",
-        "subtitle": "Découvrez quelques réalisations de Koyrasoft — applications mobiles, plateformes et outils digitaux développés pour répondre à de vrais besoins."
+        "subtitle": "Découvrez quelques réalisations de Koyrasoft — applications mobiles, plateformes et outils digitaux développés pour répondre à de vrais besoins.",
+        "visitWebsite": "Visiter le site →"
       },
       "solutions": {
         "label": "Pour qui ?",
@@ -97,8 +98,8 @@
         "subtitle": "Des solutions robustes et sur mesure pour digitaliser vos activités, automatiser vos processus et accélérer votre croissance.",
         "showcaseTitle": "Du besoin terrain au produit en production.",
         "showcaseText": "Gestion scolaire, e-commerce, CRM, marketplace, applications mobiles, tableaux de bord, facturation, suivi client ou automatisation IA — nous construisons des outils alignés sur vos processus réels, pas sur des modèles génériques.",
-        "showcaseImage": "images/motivaction/screenshot-statistiques.png",
-        "showcaseImageAlt": "Capture d'écran Motiv'Action — statistiques de discipline"
+        "showcaseImage": "images/xguida/screenshot-hero.svg",
+        "showcaseImageAlt": "XGuida — plateforme de gestion organisationnelle"
       },
       "process": {
         "label": "Notre méthode",
@@ -119,10 +120,10 @@
     },
     "featuredProject": {
       "label": "Projet phare",
-      "name": "Motiv'Action",
-      "description": "Application mobile de discipline & suivi de vie",
-      "logo": "images/motivaction/logo_c_sans_background.png",
-      "href": "#project-motivaction"
+      "name": "XGuida",
+      "description": "Plateforme intelligente de gestion organisationnelle",
+      "logo": "images/xguida/logo.svg",
+      "href": "#project-xguida"
     },
     "values": [
       {
@@ -249,6 +250,38 @@
       }
     ],
     "projects": [
+      {
+        "id": "xguida",
+        "name": "XGuida",
+        "tagline": "Gérez votre organisation intelligemment.",
+        "category": "Plateforme SaaS · Gestion organisationnelle",
+        "year": "2026",
+        "website": "https://www.xguida.com/",
+        "logo": "images/xguida/logo.svg",
+        "description": "XGuida est la plateforme tout-en-un pour entreprises, associations, restaurants, boutiques et organisations. Tâches, RH, facturation, comptabilité, contrats, réservations et IA — plus de 23 modules adaptés à votre activité, en français, anglais et japonais.",
+        "highlights": [
+          "23+ modules intégrés : projets, RH, facturation, comptabilité, contrats…",
+          "Multilingue FR / EN / JP — déployé au Mali, Sénégal et Japon",
+          "IA intégrée : résumés, recommandations et aide à la rédaction"
+        ],
+        "modules": [
+          "Projets & Tâches · Kanban et assignation",
+          "Facturation · devis, factures, templates pro",
+          "Comptabilité · SYSCOHADA / PCG, bilan, TVA",
+          "RH & Pointage · congés, paie, QR code",
+          "Contrats · signature électronique",
+          "Réservations · prise de RDV en ligne",
+          "Restaurant & Boutique · caisse, stock, livraison",
+          "XTransfers · envoi de fichiers lourds"
+        ],
+        "tags": ["SaaS", "Web", "RH", "Facturation", "Comptabilité", "IA"],
+        "screenshots": [
+          {
+            "src": "images/xguida/screenshot-hero.svg",
+            "caption": "Accueil — plateforme tout-en-un"
+          }
+        ]
+      },
       {
         "id": "motivaction",
         "name": "Motiv'Action",
@@ -485,7 +518,8 @@
       "projects": {
         "label": "Completed projects",
         "title": "Real products, already in users' hands.",
-        "subtitle": "Explore Koyrasoft deliverables — mobile apps, platforms and digital tools built to solve real-world needs."
+        "subtitle": "Explore Koyrasoft deliverables — mobile apps, platforms and digital tools built to solve real-world needs.",
+        "visitWebsite": "Visit website →"
       },
       "solutions": {
         "label": "Who we serve",
@@ -493,8 +527,8 @@
         "subtitle": "Robust, tailored solutions to digitize your operations, automate processes and accelerate growth.",
         "showcaseTitle": "From real-world needs to production-ready products.",
         "showcaseText": "School management, e-commerce, CRM, marketplaces, mobile apps, dashboards, billing, customer tracking or AI automation — we build tools aligned with your actual workflows, not generic templates.",
-        "showcaseImage": "images/motivaction/screenshot-statistiques.png",
-        "showcaseImageAlt": "Motiv'Action app screenshot — discipline statistics"
+        "showcaseImage": "images/xguida/screenshot-hero.svg",
+        "showcaseImageAlt": "XGuida — organisational management platform"
       },
       "process": {
         "label": "Our process",
@@ -515,10 +549,10 @@
     },
     "featuredProject": {
       "label": "Featured project",
-      "name": "Motiv'Action",
-      "description": "Mobile app for discipline & life tracking",
-      "logo": "images/motivaction/logo_c_sans_background.png",
-      "href": "#project-motivaction"
+      "name": "XGuida",
+      "description": "Intelligent organisational management platform",
+      "logo": "images/xguida/logo.svg",
+      "href": "#project-xguida"
     },
     "values": [
       {
@@ -645,6 +679,38 @@
       }
     ],
     "projects": [
+      {
+        "id": "xguida",
+        "name": "XGuida",
+        "tagline": "Manage your organization intelligently.",
+        "category": "SaaS platform · Organisational management",
+        "year": "2026",
+        "website": "https://www.xguida.com/",
+        "logo": "images/xguida/logo.svg",
+        "description": "XGuida is the all-in-one platform for businesses, associations, restaurants, shops and organizations. Tasks, HR, invoicing, accounting, contracts, bookings and AI — 23+ modules adapted to your activity, in French, English and Japanese.",
+        "highlights": [
+          "23+ integrated modules: projects, HR, billing, accounting, contracts…",
+          "Multilingual FR / EN / JP — live in Mali, Senegal and Japan",
+          "Built-in AI: smart summaries, recommendations and writing assistance"
+        ],
+        "modules": [
+          "Projects & Tasks · Kanban and assignments",
+          "Billing · quotes, invoices, pro templates",
+          "Accounting · SYSCOHADA / PCG, balance sheet, VAT",
+          "HR & Attendance · leave, payroll, QR code",
+          "Contracts · e-signature",
+          "Bookings · online appointments",
+          "Restaurant & Store · POS, stock, delivery",
+          "XTransfers · secure large file sharing"
+        ],
+        "tags": ["SaaS", "Web", "HR", "Billing", "Accounting", "AI"],
+        "screenshots": [
+          {
+            "src": "images/xguida/screenshot-hero.svg",
+            "caption": "Home — all-in-one platform"
+          }
+        ]
+      },
       {
         "id": "motivaction",
         "name": "Motiv'Action",

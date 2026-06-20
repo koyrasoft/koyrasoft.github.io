@@ -163,6 +163,10 @@ function renderProjects(data) {
         .join("");
 
       const logoClass = project.logoClass ? ` ${project.logoClass}` : "";
+      const visitLabel = data.sections?.projects?.visitWebsite || "Visit website →";
+      const websiteLink = project.website
+        ? `<a class="project-card__link" href="${project.website}" target="_blank" rel="noopener noreferrer">${visitLabel}</a>`
+        : "";
 
       return `
       <article class="project-card" id="project-${project.id}">
@@ -182,6 +186,7 @@ function renderProjects(data) {
           ${highlights ? `<ul class="project-card__highlights">${highlights}</ul>` : ""}
           ${modules ? `<div class="project-card__modules">${modules}</div>` : ""}
           ${tags ? `<div class="project-card__tags">${tags}</div>` : ""}
+          ${websiteLink}
         </div>
         <div class="project-card__gallery">${screenshots}</div>
       </article>`;

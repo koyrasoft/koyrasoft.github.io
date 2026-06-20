@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" fill="none">
+  <rect width="390" height="844" fill="#0C1E3C"/>
+  <rect x="0" y="0" width="390" height="56" fill="rgba(255,255,255,0.04)"/>
+  <text x="24" y="36" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#E8B200">X</text>
+  <text x="42" y="36" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" fill="#F1F5FF">Guida</text>
+  <rect x="24" y="80" width="160" height="28" rx="14" fill="rgba(109,77,255,0.2)" stroke="rgba(109,77,255,0.35)"/>
+  <text x="38" y="99" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="800" fill="#A5B4FC">BÊTA  DISPONIBLE</text>
+  <text x="24" y="150" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900" fill="#F1F5FF">Gérez votre</text>
+  <text x="24" y="186" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900" fill="#E8B200">organisation</text>
+  <text x="24" y="230" font-family="Inter, Arial, sans-serif" font-size="13" fill="rgba(241,245,255,0.55)">Tâches · RH · Facturation · Comptabilité</text>
+  <rect x="24" y="260" width="342" height="52" rx="12" fill="#E8B200"/>
+  <text x="48" y="292" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="900" fill="#0C1E3C">Créer un compte gratuit ’</text>
+  <rect x="24" y="340" width="100" height="72" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="38" y="372" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" fill="#E8B200">23+</text>
+  <text x="38" y="394" font-family="Inter, Arial, sans-serif" font-size="10" fill="rgba(241,245,255,0.55)">Modules</text>
+  <rect x="140" y="340" width="110" height="72" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="154" y="372" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="900" fill="#F1F5FF"><ò<ñ <ø<ó <ï<õ</text>
+  <text x="154" y="394" font-family="Inter, Arial, sans-serif" font-size="10" fill="rgba(241,245,255,0.55)">Mali · Sénégal</text>
+  <rect x="24" y="430" width="342" height="88" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="42" y="462" font-family="Inter, Arial, sans-serif" font-size="22" fill="#F1F5FF">=Ë</text>
+  <text x="78" y="458" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" fill="#F1F5FF">Projets &amp; Tâches</text>
+  <text x="78" y="478" font-family="Inter, Arial, sans-serif" font-size="11" fill="rgba(241,245,255,0.55)">Kanban, priorités, échéances</text>
+  <rect x="24" y="530" width="342" height="88" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="42" y="562" font-family="Inter, Arial, sans-serif" font-size="22" fill="#F1F5FF">>þ</text>
+  <text x="78" y="558" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" fill="#F1F5FF">Facturation</text>
+  <text x="78" y="578" font-family="Inter, Arial, sans-serif" font-size="11" fill="rgba(241,245,255,0.55)">Devis, factures, comptabilité</text>
+  <rect x="24" y="630" width="342" height="88" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="42" y="662" font-family="Inter, Arial, sans-serif" font-size="22" fill="#F1F5FF">></text>
+  <text x="78" y="658" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" fill="#F1F5FF">IA intégrée</text>
+  <text x="78" y="678" font-family="Inter, Arial, sans-serif" font-size="11" fill="rgba(241,245,255,0.55)">Résumés, recommandations</text>
+</svg>
