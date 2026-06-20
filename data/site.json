@@ -98,8 +98,8 @@
         "subtitle": "Des solutions robustes et sur mesure pour digitaliser vos activités, automatiser vos processus et accélérer votre croissance.",
         "showcaseTitle": "Du besoin terrain au produit en production.",
         "showcaseText": "Gestion scolaire, e-commerce, CRM, marketplace, applications mobiles, tableaux de bord, facturation, suivi client ou automatisation IA — nous construisons des outils alignés sur vos processus réels, pas sur des modèles génériques.",
-        "showcaseImage": "images/xguida/screenshot-hero.svg",
-        "showcaseImageAlt": "XGuida — plateforme de gestion organisationnelle"
+        "showcaseImage": "images/motivaction/screenshot-statistiques.png",
+        "showcaseImageAlt": "Capture d'écran Motiv'Action — statistiques de discipline"
       },
       "process": {
         "label": "Notre méthode",
@@ -121,7 +121,7 @@
     "featuredProject": {
       "label": "Projet phare",
       "name": "XGuida",
-      "description": "Plateforme intelligente de gestion organisationnelle",
+      "description": "Plateforme web de gestion organisationnelle",
       "logo": "images/xguida/logo.svg",
       "href": "#project-xguida"
     },
@@ -254,13 +254,14 @@
         "id": "xguida",
         "name": "XGuida",
         "tagline": "Gérez votre organisation intelligemment.",
-        "category": "Plateforme SaaS · Gestion organisationnelle",
+        "category": "Plateforme web SaaS · Gestion organisationnelle",
         "year": "2026",
         "website": "https://www.xguida.com/",
         "logo": "images/xguida/logo.svg",
-        "description": "XGuida est la plateforme tout-en-un pour entreprises, associations, restaurants, boutiques et organisations. Tâches, RH, facturation, comptabilité, contrats, réservations et IA — plus de 23 modules adaptés à votre activité, en français, anglais et japonais.",
+        "description": "XGuida est une plateforme web tout-en-un pour entreprises, associations, restaurants, boutiques et organisations. Tâches, RH, facturation, comptabilité, contrats, réservations et IA — plus de 23 modules adaptés à votre activité, en français, anglais et japonais. Accessible depuis le navigateur ; l'application mobile n'est pas encore disponible.",
         "highlights": [
           "23+ modules intégrés : projets, RH, facturation, comptabilité, contrats…",
+          "Plateforme web — version mobile à venir",
           "Multilingue FR / EN / JP — déployé au Mali, Sénégal et Japon",
           "IA intégrée : résumés, recommandations et aide à la rédaction"
         ],
@@ -274,13 +275,7 @@
           "Restaurant & Boutique · caisse, stock, livraison",
           "XTransfers · envoi de fichiers lourds"
         ],
-        "tags": ["SaaS", "Web", "RH", "Facturation", "Comptabilité", "IA"],
-        "screenshots": [
-          {
-            "src": "images/xguida/screenshot-hero.svg",
-            "caption": "Accueil — plateforme tout-en-un"
-          }
-        ]
+        "tags": ["SaaS", "Web", "RH", "Facturation", "Comptabilité", "IA"]
       },
       {
         "id": "motivaction",
@@ -527,8 +522,8 @@
         "subtitle": "Robust, tailored solutions to digitize your operations, automate processes and accelerate growth.",
         "showcaseTitle": "From real-world needs to production-ready products.",
         "showcaseText": "School management, e-commerce, CRM, marketplaces, mobile apps, dashboards, billing, customer tracking or AI automation — we build tools aligned with your actual workflows, not generic templates.",
-        "showcaseImage": "images/xguida/screenshot-hero.svg",
-        "showcaseImageAlt": "XGuida — organisational management platform"
+        "showcaseImage": "images/motivaction/screenshot-statistiques.png",
+        "showcaseImageAlt": "Motiv'Action app screenshot — discipline statistics"
       },
       "process": {
         "label": "Our process",
@@ -550,7 +545,7 @@
     "featuredProject": {
       "label": "Featured project",
       "name": "XGuida",
-      "description": "Intelligent organisational management platform",
+      "description": "Web-based organisational management platform",
       "logo": "images/xguida/logo.svg",
       "href": "#project-xguida"
     },
@@ -683,13 +678,14 @@
         "id": "xguida",
         "name": "XGuida",
         "tagline": "Manage your organization intelligently.",
-        "category": "SaaS platform · Organisational management",
+        "category": "Web SaaS platform · Organisational management",
         "year": "2026",
         "website": "https://www.xguida.com/",
         "logo": "images/xguida/logo.svg",
-        "description": "XGuida is the all-in-one platform for businesses, associations, restaurants, shops and organizations. Tasks, HR, invoicing, accounting, contracts, bookings and AI — 23+ modules adapted to your activity, in French, English and Japanese.",
+        "description": "XGuida is a web-based all-in-one platform for businesses, associations, restaurants, shops and organizations. Tasks, HR, invoicing, accounting, contracts, bookings and AI — 23+ modules adapted to your activity, in French, English and Japanese. Accessible from your browser; the mobile app is not yet available.",
         "highlights": [
           "23+ integrated modules: projects, HR, billing, accounting, contracts…",
+          "Web platform — mobile version coming soon",
           "Multilingual FR / EN / JP — live in Mali, Senegal and Japan",
           "Built-in AI: smart summaries, recommendations and writing assistance"
         ],
@@ -703,13 +699,7 @@
           "Restaurant & Store · POS, stock, delivery",
           "XTransfers · secure large file sharing"
         ],
-        "tags": ["SaaS", "Web", "HR", "Billing", "Accounting", "AI"],
-        "screenshots": [
-          {
-            "src": "images/xguida/screenshot-hero.svg",
-            "caption": "Home — all-in-one platform"
-          }
-        ]
+        "tags": ["SaaS", "Web", "HR", "Billing", "Accounting", "AI"]
       },
       {
         "id": "motivaction",

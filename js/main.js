@@ -150,6 +150,7 @@ function renderProjects(data) {
       const tags = (project.tags || [])
         .map((tag) => `<span class="project-tag">${tag}</span>`)
         .join("");
+      const hasGallery = (project.screenshots || []).length > 0;
       const screenshots = (project.screenshots || [])
         .map(
           (shot) => `
@@ -169,7 +170,7 @@ function renderProjects(data) {
         : "";
 
       return `
-      <article class="project-card" id="project-${project.id}">
+      <article class="project-card${hasGallery ? "" : " project-card--solo"}" id="project-${project.id}">
         <div class="project-card__content">
           <div class="project-card__header">
             <img class="project-card__logo${logoClass}" src="${project.logo}" alt="${project.name}" width="56" height="56" loading="lazy">
@@ -188,7 +189,7 @@ function renderProjects(data) {
           ${tags ? `<div class="project-card__tags">${tags}</div>` : ""}
           ${websiteLink}
         </div>
-        <div class="project-card__gallery">${screenshots}</div>
+        ${hasGallery ? `<div class="project-card__gallery">${screenshots}</div>` : ""}
       </article>`;
     })
     .join("");

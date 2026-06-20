@@ -1015,6 +1015,10 @@ h2 {
   align-items: center;
 }
 
+.project-card--solo {
+  grid-template-columns: 1fr;
+}
+
 .project-card__header {
   display: flex;
   align-items: center;
