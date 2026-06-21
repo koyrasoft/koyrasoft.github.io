@@ -20,7 +20,7 @@ window.KOYRASOFT_SITE={
     "formScriptUrl": "https://script.google.com/macros/s/AKfycbzYf9XCFJy4aU0k8snn-YVxHsTlfw8NFb99ZWGgBbJzEWEBI2c98c_ncZqljW-kWWlK/exec"
   },
   "analytics": {
-    "scriptUrl": ""
+    "scriptUrl": "https://script.google.com/macros/s/AKfycbweQvAcBfHNdZfmt2rHpTC6rAPsyy2TdSy_eSMpYyrSWDNiPlbCKUpO7lBiWJaFDA1g6A/exec"
   },
   "fr": {
     "meta": {
