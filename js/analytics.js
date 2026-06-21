@@ -5,10 +5,6 @@
   const VISITOR_KEY = "koyrasoft_vid";
   const SESSION_PREFIX = "koyrasoft_tracked_";
 
-  function isAdminPage() {
-    return /admin\.html$/i.test(window.location.pathname);
-  }
-
   function getAnalyticsUrl() {
     const params = new URLSearchParams(window.location.search);
     const fromQuery = params.get("analyticsUrl");
@@ -36,8 +32,6 @@
   }
 
   function trackVisit() {
-    if (isAdminPage()) return;
-
     const scriptUrl = getAnalyticsUrl();
     if (!scriptUrl) return;
 

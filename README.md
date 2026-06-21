@@ -15,8 +15,18 @@ Site web officiel de **Koyrasoft** — développement web, mobile et logiciels s
 ├── data/site-data.js   # Fallback hors serveur
 ├── images/             # Captures projets
 ├── logos/              # Logos Koyrasoft
-└── google-apps-script/ # Backend formulaire de contact
+└── google-apps-script/ # Analytics, admin (Admin.html + analytics.gs)
 ```
+
+## Admin & statistiques
+
+Tableau de bord privé hébergé sur **Google Apps Script** (pas de page sur le site) :
+
+```
+{analytics.scriptUrl}?action=admin
+```
+
+Fichiers à déployer sur [script.google.com](https://script.google.com) : `analytics.gs` + `Admin.html`.
 
 ## Développement local
 

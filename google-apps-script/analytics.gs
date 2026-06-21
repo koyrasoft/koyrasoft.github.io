@@ -6,7 +6,7 @@
  * 2. Fichier → + → HTML → nommer « Admin » → coller Admin.html
  * 3. Exécuter setup() → autoriser Google Sheets
  * 4. Déployer → Application Web → Exécuter : MOI · Accès : Tout le monde
- * 5. Admin : URL /exec?action=admin  ·  Tracking : URL /exec dans site.json
+ * Admin : {URL déployée}?action=admin  (fichier Admin.html dans le projet GAS)
  *
  * PIN admin : modifiable via setup() ou dans Propriétés du script (ADMIN_PIN)
  */
