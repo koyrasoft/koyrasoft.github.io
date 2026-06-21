@@ -14,6 +14,10 @@
 
 const ADMIN_PIN_DEFAULT = "koyra2026";
 const MAX_VISIT_LOG = 500;
+const SCRIPT_VERSION = "2026-06-22-v2";
+
+/** ID du Google Sheet créé par setup() — secours si les propriétés du script sont vides. */
+const SPREADSHEET_ID = "1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI";
 
 function setup() {
   const props = PropertiesService.getScriptProperties();
@@ -21,6 +25,7 @@ function setup() {
     props.setProperty("ADMIN_PIN", ADMIN_PIN_DEFAULT);
   }
 
+  saveSpreadsheetId_(SPREADSHEET_ID);
   const ss = ensureSpreadsheet_();
   const url = ss.getUrl();
   Logger.log("Setup OK");
@@ -47,12 +52,13 @@ function resetSpreadsheet() {
 /** Crée le Google Sheet — à exécuter uniquement depuis l’éditeur Apps Script. */
 function ensureSpreadsheet_() {
   const props = PropertiesService.getScriptProperties();
-  const id = props.getProperty("SPREADSHEET_ID");
+  const id = getSpreadsheetId_();
 
   if (id) {
     try {
       const ss = SpreadsheetApp.openById(id);
       if (!ss.getSheetByName("Stats")) initSheets_(ss);
+      saveSpreadsheetId_(ss.getId());
       return ss;
     } catch (err) {
       Logger.log("Sheet introuvable, recréation… " + err);
@@ -61,7 +67,7 @@ function ensureSpreadsheet_() {
   }
 
   const ss = SpreadsheetApp.create("Koyrasoft Analytics");
-  props.setProperty("SPREADSHEET_ID", ss.getId());
+  saveSpreadsheetId_(ss.getId());
   initSheets_(ss);
   Logger.log("Google Sheet créé : " + ss.getUrl());
   return ss;
@@ -69,22 +75,45 @@ function ensureSpreadsheet_() {
 
 /** Ouvre le Google Sheet existant — utilisé par l’application web déployée. */
 function openSpreadsheet_() {
-  const id = PropertiesService.getScriptProperties().getProperty("SPREADSHEET_ID");
+  const id = getSpreadsheetId_();
   if (!id) {
     throw new Error(
-      "Google Sheet non configuré. Ouvrez script.google.com, exécutez setup() une fois (▶), autorisez l'accès, puis redéployez l'application web."
+      "Google Sheet non configuré. Exécutez setup() dans Apps Script, puis redéployez (Exécuter : Moi)."
     );
   }
 
   try {
-    const ss = SpreadsheetApp.openById(id);
-    if (!ss.getSheetByName("Stats")) initSheets_(ss);
-    return ss;
+    return SpreadsheetApp.openById(id);
   } catch (err) {
     throw new Error(
-      "Google Sheet introuvable. Exécutez resetSpreadsheet() dans Apps Script, puis redéployez."
+      "Accès Google Sheet refusé. Redéployez l'application web avec « Exécuter en tant que : Moi » (pas « Utilisateur accédant »)."
     );
   }
+}
+
+/** Test depuis l’éditeur : simule l’appel admin (doit réussir avant déploiement). */
+function verifyDeployment() {
+  const result = getStats_({ pin: ADMIN_PIN_DEFAULT });
+  Logger.log(JSON.stringify(result, null, 2));
+  return result;
+}
+
+function ping_() {
+  const props = PropertiesService.getScriptProperties();
+  return {
+    ok: true,
+    version: SCRIPT_VERSION,
+    spreadsheetId: getSpreadsheetId_(),
+    hasScriptProperty: Boolean(props.getProperty("SPREADSHEET_ID")),
+  };
+}
+
+function getSpreadsheetId_() {
+  return PropertiesService.getScriptProperties().getProperty("SPREADSHEET_ID") || SPREADSHEET_ID;
+}
+
+function saveSpreadsheetId_(id) {
+  PropertiesService.getScriptProperties().setProperty("SPREADSHEET_ID", id);
 }
 
 function doGet(e) {
@@ -97,8 +126,10 @@ function doGet(e) {
         return json_(getStats_(e.parameter));
       case "update":
         return json_(updateStats_(e.parameter));
+      case "ping":
+        return json_(ping_());
       default:
-        return json_({ ok: true, service: "Koyrasoft Analytics" });
+        return json_({ ok: true, service: "Koyrasoft Analytics", version: SCRIPT_VERSION });
     }
   } catch (err) {
     return json_({ ok: false, error: friendlyError_(err) });
@@ -110,15 +141,15 @@ function friendlyError_(err) {
 
   if (
     msg.indexOf("SpreadsheetApp.create") >= 0 ||
+    msg.indexOf("SpreadsheetApp.openById") >= 0 ||
     msg.indexOf("spreadsheets") >= 0 ||
     msg.indexOf("authorization") >= 0 ||
     msg.indexOf("権限") >= 0
   ) {
     return (
-      "Autorisation Google Sheets manquante. " +
-      "1) Ouvrez script.google.com avec koyra.com@gmail.com · " +
-      "2) Exécutez setup() (▶) et autorisez · " +
-      "3) Redéployez l'application web (Exécuter : Moi · Accès : Tout le monde)."
+      "Déploiement incorrect. Dans Apps Script : Déployer → Gérer → Modifier → " +
+      "« Exécuter en tant que : Moi (koyra.com@gmail.com) » · « Accès : Tout le monde » · " +
+      "puis Nouvelle version → Déployer. Collez aussi la dernière version de analytics.gs."
     );
   }
 

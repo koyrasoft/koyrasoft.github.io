@@ -85,7 +85,19 @@ function setLoginError(message) {
     return;
   }
   loginError.hidden = false;
-  loginError.textContent = message;
+  const isDeployError =
+    /SpreadsheetApp|spreadsheets|権限|Exécuter en tant|Moi|Déploiement/i.test(message);
+  if (isDeployError) {
+    loginError.innerHTML =
+      message +
+      "<br><br><strong>Checklist :</strong><ol style='margin:10px 0 0 18px;line-height:1.6'>" +
+      "<li>Coller la dernière version de <code>analytics.gs</code></li>" +
+      "<li>Exécuter <code>verifyDeployment()</code> dans Apps Script (doit réussir)</li>" +
+      "<li>Déployer → Gérer → Modifier → <strong>Exécuter en tant que : Moi</strong></li>" +
+      "<li>Nouvelle version → Déployer</li></ol>";
+  } else {
+    loginError.textContent = message;
+  }
 }
 
 function setFormStatus(message, isError) {
