@@ -7,7 +7,7 @@
   <title>Admin — Koyrasoft</title>
   <link rel="icon" type="image/png" href="logos/logo-k-brand.png">
   <style>
-    :root { --text:#f8fafc; --muted:#a9b4c7; --gold:#f2c768; --stroke:rgba(255,255,255,.12); --ok:#4ade80; --err:#ffb4b4; }
+    :root { --text:#f8fafc; --muted:#a9b4c7; --gold:#f2c768; --stroke:rgba(255,255,255,.12); --ok:#4ade80; --err:#ffb4b4; --warn:#f2c768; }
     * { box-sizing:border-box; margin:0; padding:0; }
     body {
       font-family:Inter,system-ui,sans-serif; min-height:100vh; padding:24px;
@@ -33,15 +33,17 @@
     .status { padding:12px 14px; border-radius:12px; font-size:.88rem; margin-bottom:16px; border:1px solid var(--stroke); }
     .status.ok { border-color:rgba(74,222,128,.35); color:var(--ok); }
     .status.err { border-color:rgba(255,107,107,.35); color:var(--err); }
-    .warn {
+    .status.warn { border-color:rgba(242,199,104,.35); color:var(--warn); }
+    .warn-box {
       padding:16px; border-radius:12px; font-size:.88rem; line-height:1.65;
       background:rgba(255,107,107,.08); border:1px solid rgba(255,107,107,.3); color:#ffb4b4;
     }
-    .warn strong { color:#fff; }
+    .warn-box strong { color:#fff; }
     ol { margin:10px 0 0 20px; }
     li { margin-bottom:8px; }
     .back { color:var(--gold); font-size:.88rem; text-decoration:none; }
     code { font-size:.82rem; word-break:break-all; }
+    [hidden] { display:none !important; }
   </style>
 </head>
 <body>
@@ -51,48 +53,50 @@
       <p>Statistiques &amp; visiteurs — invisible pour le public du site.</p>
       <div id="status" class="status">Vérification…</div>
 
-      <h2>✅ Option 1 — Google Sheet (recommandé, fonctionne maintenant)</h2>
-      <p>Toutes les stats sont dans votre feuille Google. Connectez-vous avec <strong id="ownerEmail">koyra.com@gmail.com</strong>.</p>
+      <h2>Option 1 — Google Sheet</h2>
+      <p>Stats brutes — connectez-vous avec <strong id="ownerEmail">koyra.com@gmail.com</strong>.</p>
       <div class="btns">
         <a class="btn" id="sheetLink" href="#" target="_blank" rel="noopener">Ouvrir le Google Sheet →</a>
       </div>
       <p style="font-size:.85rem">Onglets : <code>Stats</code> · <code>Daily</code> · <code>Visits</code> · <code>Visitors</code></p>
 
-      <h2 style="margin-top:24px">Option 2 — Tableau de bord web</h2>
-      <p>Interface graphique (nécessite un déploiement Google correct).</p>
+      <h2 style="margin-top:24px">Option 2 — Dashboard web</h2>
+      <p id="dashHint">Interface graphique avec PIN.</p>
       <div class="btns">
         <a class="btn btn-secondary" id="adminLink" href="#" target="_blank" rel="noopener">Ouvrir le dashboard →</a>
       </div>
     </main>
 
-    <aside class="card warn" id="deployHelp">
-      <strong>⚠️ Erreur « fichier introuvable » (日本語) ?</strong>
-      <p style="color:#ffb4b4;margin:10px 0 0">Votre déploiement Google n’est <em>pas public</em>. Le script redirige vers une page de connexion au lieu de répondre.</p>
-      <ol>
-        <li>Allez sur <a href="https://script.google.com" style="color:#f2c768">script.google.com</a> avec <strong>koyra.com@gmail.com</strong></li>
-        <li>Collez la dernière version de <code>analytics.gs</code></li>
-        <li><strong>Déployer</strong> → <strong>Gérer les déploiements</strong> → ✏️ <strong>Modifier</strong></li>
-        <li>Exécuter en tant que : <strong>Moi</strong></li>
-        <li>Accès : <strong>Tout le monde</strong> — pas « Utilisateurs avec un compte Google »</li>
-        <li><strong>Nouvelle version</strong> → <strong>Déployer</strong></li>
-        <li>Test : ouvrez <code id="pingUrl"></code> — vous devez voir du JSON, pas une page de connexion</li>
+    <aside class="card warn-box" id="deployHelp" hidden>
+      <strong id="deployTitle">Mise à jour requise</strong>
+      <p id="deployMsg" style="color:#ffb4b4;margin:10px 0 0"></p>
+      <ol id="deploySteps">
+        <li><a href="https://script.google.com" style="color:#f2c768">script.google.com</a> → projet Analytics</li>
+        <li>Collez <strong>tout</strong> le fichier <code>analytics.gs</code> du repo (version v5, admin intégré)</li>
+        <li><strong>Déployer</strong> → Gérer → ✏️ Modifier → <strong>Moi</strong> · <strong>Tout le monde</strong></li>
+        <li><strong>Nouvelle version</strong> → Déployer</li>
       </ol>
-      <p style="margin-top:12px">PIN dashboard : <code>koyra2026</code></p>
+      <p style="margin-top:12px">Test : <code id="pingUrl"></code></p>
+      <p>PIN : <code>koyra2026</code></p>
     </aside>
 
     <p style="margin-top:16px"><a class="back" href="index.html">← Retour au site</a></p>
   </div>
 
-  <script src="data/site-data.js"></script>
+  <script src="data/site-data.js?v=20260622"></script>
   <script>
     (function () {
+      var FALLBACK =
+        "https://script.google.com/macros/s/AKfycbzmvtJ9KsErE6WMf-ayY2vMpb2nloFpk6hQc89AygVki1iKTuz5sa2jW8pzWbCH3Hwt/exec";
       var cfg = (window.KOYRASOFT_SITE && window.KOYRASOFT_SITE.analytics) || {};
-      var base = (cfg.scriptUrl || "").trim();
+      var base = (cfg.scriptUrl || FALLBACK).trim().replace(/\/u\/\d+\//, "/");
       var owner = (cfg.ownerEmail || "koyra.com@gmail.com").trim();
       var sheet = (cfg.spreadsheetUrl || "").trim();
       var status = document.getElementById("status");
+      var deployHelp = document.getElementById("deployHelp");
 
       document.getElementById("ownerEmail").textContent = owner;
+      document.getElementById("pingUrl").textContent = base + "?action=ping";
 
       function accountChooser(target) {
         return (
@@ -105,56 +109,54 @@
 
       if (sheet) {
         document.getElementById("sheetLink").href = accountChooser(sheet);
-      } else {
-        document.getElementById("sheetLink").hidden = true;
       }
 
-      if (base) {
-        var adminTarget = base.replace(/\/u\/\d+\//, "/") + "?action=admin";
-        document.getElementById("adminLink").href = accountChooser(adminTarget);
-        document.getElementById("pingUrl").textContent = base.replace(/\/u\/\d+\//, "/") + "?action=ping";
-        ping(base.replace(/\/u\/\d+\//, "/"));
-      } else {
-        status.className = "status err";
-        status.textContent = "URL analytics manquante dans site.json.";
+      /* Dashboard public — lien direct (pas AccountChooser) */
+      document.getElementById("adminLink").href = base + "?action=admin";
+
+      ping(base);
+
+      function showDeploy(msg) {
+        deployHelp.hidden = false;
+        document.getElementById("deployMsg").textContent = msg;
       }
 
       function ping(url) {
-        var cb = "koyrasoftPing_" + Date.now();
-        var done = false;
-        var timer = setTimeout(finishErr, 10000);
+        fetch(url + "?action=ping", { method: "GET", credentials: "omit" })
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (data) {
+            if (!data || !data.ok) {
+              status.className = "status err";
+              status.textContent = "Script injoignable. Utilisez le Google Sheet (option 1).";
+              showDeploy("Le script ne répond pas correctement.");
+              return;
+            }
 
-        function cleanup() {
-          clearTimeout(timer);
-          delete window[cb];
-          if (script.parentNode) script.remove();
-        }
+            if (data.version && data.version.indexOf("v5") >= 0) {
+              status.className = "status ok";
+              status.textContent = "Script OK (" + data.version + "). Dashboard prêt.";
+              deployHelp.hidden = true;
+              return;
+            }
 
-        function finishErr() {
-          if (done) return;
-          done = true;
-          cleanup();
-          status.className = "status err";
-          status.textContent =
-            "Script Google non public — utilisez le Google Sheet (option 1). Corrigez le déploiement ci-dessous.";
-        }
-
-        window[cb] = function (data) {
-          if (done) return;
-          done = true;
-          cleanup();
-          if (data && data.ok) {
-            status.className = "status ok";
-            status.textContent = "Script OK (" + (data.version || "ok") + "). Le dashboard web devrait fonctionner.";
-          } else {
-            finishErr();
-          }
-        };
-
-        var script = document.createElement("script");
-        script.onerror = finishErr;
-        script.src = url + "?action=ping&callback=" + cb;
-        document.body.appendChild(script);
+            /* Public mais ancien code → dashboard casse (fichier Admin manquant) */
+            status.className = "status warn";
+            status.textContent =
+              "Script public mais code ancien. Collez analytics.gs v5 dans Apps Script, puis redéployez.";
+            document.getElementById("dashHint").textContent =
+              "⚠️ Le dashboard ne marchera qu'après mise à jour de analytics.gs (admin intégré).";
+            showDeploy(
+              "Votre déploiement répond, mais le code est ancien (pas de version v5). " +
+                "C'est pourquoi le dashboard affiche une erreur Google. Collez le analytics.gs du repo et redéployez."
+            );
+          })
+          .catch(function () {
+            status.className = "status err";
+            status.textContent = "Script inaccessible. Utilisez le Google Sheet (option 1).";
+            showDeploy("Accès : « Tout le monde » requis dans le déploiement Google.");
+          });
       }
     })();
   </script>
