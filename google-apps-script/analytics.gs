@@ -15,6 +15,7 @@
 const ADMIN_PIN_DEFAULT = "koyra2026";
 const MAX_VISIT_LOG = 500;
 const SCRIPT_VERSION = "2026-06-22-v5";
+const OWNER_EMAIL = "koyra.com@gmail.com";
 
 /** ID du Google Sheet créé par setup() — secours si les propriétés du script sont vides. */
 const SPREADSHEET_ID = "1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI";
@@ -27,6 +28,7 @@ function setup() {
 
   saveSpreadsheetId_(SPREADSHEET_ID);
   const ss = ensureSpreadsheet_();
+  shareSheetWithOwner_(ss);
   const url = ss.getUrl();
   Logger.log("Setup OK");
   Logger.log("ADMIN_PIN = " + props.getProperty("ADMIN_PIN"));
@@ -39,6 +41,34 @@ function showSpreadsheetUrl() {
   const url = openSpreadsheet_().getUrl();
   Logger.log("Ouvrir : " + url);
   return url;
+}
+
+/** Partage le Sheet avec koyra.com@gmail.com — exécuter si « fichier introuvable ». */
+function fixSheetAccess() {
+  const ss = ensureSpreadsheet_();
+  shareSheetWithOwner_(ss);
+  const url = ss.getUrl();
+  Logger.log("Sheet partagé avec " + OWNER_EMAIL);
+  Logger.log("URL = " + url);
+  try {
+    MailApp.sendEmail(
+      OWNER_EMAIL,
+      "Koyrasoft Analytics — lien Google Sheet",
+      "Ouvrez vos statistiques :\n" + url
+    );
+    Logger.log("Email envoyé à " + OWNER_EMAIL);
+  } catch (err) {
+    Logger.log("Email non envoyé : " + err);
+  }
+  return url;
+}
+
+function shareSheetWithOwner_(ss) {
+  try {
+    ss.addEditor(OWNER_EMAIL);
+  } catch (err) {
+    Logger.log("Partage Sheet : " + err);
+  }
 }
 
 /** Supprime l’ID enregistré et recrée un nouveau Google Sheet (si l’ancien est perdu). */
@@ -69,6 +99,7 @@ function ensureSpreadsheet_() {
   const ss = SpreadsheetApp.create("Koyrasoft Analytics");
   saveSpreadsheetId_(ss.getId());
   initSheets_(ss);
+  shareSheetWithOwner_(ss);
   Logger.log("Google Sheet créé : " + ss.getUrl());
   return ss;
 }
