@@ -9,6 +9,7 @@ Site web officiel de **Koyrasoft** — développement web, mobile et logiciels s
 
 ```
 ├── index.html          # Page principale
+├── admin.html          # Portail admin (lien vers Google Apps Script)
 ├── css/styles.css      # Styles
 ├── js/main.js          # Logique (i18n, formulaire, rendu)
 ├── data/site.json      # Contenu FR/EN
