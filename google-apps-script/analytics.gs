@@ -1,20 +1,19 @@
 /**
  * Koyrasoft — Analytics & compteur de visiteurs (Google Apps Script)
  *
- * INSTALLATION (obligatoire avant l’admin) :
- * 1. https://script.google.com → coller ce fichier
- * 2. Sélectionner setup → ▶ Exécuter → Autoriser l’accès Google Sheets
- * 3. Déployer → Application Web → Exécuter en tant que : MOI · Accès : Tout le monde
- * 4. Copier l’URL /exec dans data/site.json → analytics.scriptUrl
- *
- * ⚠️ Sans l’étape 2, l’admin affichera une erreur de permission.
+ * INSTALLATION :
+ * 1. https://script.google.com → coller analytics.gs
+ * 2. Fichier → + → HTML → nommer « Admin » → coller Admin.html
+ * 3. Exécuter setup() → autoriser Google Sheets
+ * 4. Déployer → Application Web → Exécuter : MOI · Accès : Tout le monde
+ * 5. Admin : URL /exec?action=admin  ·  Tracking : URL /exec dans site.json
  *
  * PIN admin : modifiable via setup() ou dans Propriétés du script (ADMIN_PIN)
  */
 
 const ADMIN_PIN_DEFAULT = "koyra2026";
 const MAX_VISIT_LOG = 500;
-const SCRIPT_VERSION = "2026-06-22-v3";
+const SCRIPT_VERSION = "2026-06-22-v4";
 
 /** ID du Google Sheet créé par setup() — secours si les propriétés du script sont vides. */
 const SPREADSHEET_ID = "1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI";
@@ -118,6 +117,11 @@ function saveSpreadsheetId_(id) {
 
 function doGet(e) {
   const action = (e.parameter.action || "").trim();
+
+  if (action === "admin") {
+    return serveAdmin_();
+  }
+
   let payload;
 
   try {
@@ -142,6 +146,39 @@ function doGet(e) {
   }
 
   return respond_(payload, e);
+}
+
+/** Admin hébergé sur Google — pas de CORS / NetworkError. */
+function serveAdmin_() {
+  return HtmlService.createTemplateFromFile("Admin")
+    .evaluate()
+    .setTitle("Admin — Koyrasoft")
+    .addMetaTag("viewport", "width=device-width, initial-scale=1")
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+/** Appelé depuis Admin.html via google.script.run */
+function getStatsForAdmin(pin) {
+  try {
+    return getStats_({ pin: pin });
+  } catch (err) {
+    return { ok: false, error: friendlyError_(err) };
+  }
+}
+
+/** Appelé depuis Admin.html via google.script.run */
+function updateStatsForAdmin(pin, contactRequests, projectsDelivered, activeClients, notes) {
+  try {
+    return updateStats_({
+      pin: pin,
+      contactRequests: contactRequests,
+      projectsDelivered: projectsDelivered,
+      activeClients: activeClients,
+      notes: notes,
+    });
+  } catch (err) {
+    return { ok: false, error: friendlyError_(err) };
+  }
 }
 
 function friendlyError_(err) {
