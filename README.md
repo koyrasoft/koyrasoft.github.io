@@ -26,7 +26,7 @@ Tableau de bord privé hébergé sur **Google Apps Script** (pas de page sur le 
 {analytics.scriptUrl}?action=admin
 ```
 
-Fichiers à déployer sur [script.google.com](https://script.google.com) : `analytics.gs` + `Admin.html`.
+Fichier unique à déployer sur [script.google.com](https://script.google.com) : `analytics.gs`.
 
 ## Développement local
 
