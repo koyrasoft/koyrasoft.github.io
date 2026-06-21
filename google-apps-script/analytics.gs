@@ -4,10 +4,10 @@
  * INSTALLATION :
  * 1. https://script.google.com → coller analytics.gs (un seul fichier)
  * 2. Exécuter setup() → autoriser Google Sheets
- * 3. Déployer → Application Web → Exécuter : MOI · Accès : TOUT LE MONDE
- * 4. Admin : {URL}/exec?action=admin  ·  Tracking : {URL}/exec dans site.json
- *
- * ⚠️ Accès « Tout le monde » obligatoire. Utiliser l’URL sans /u/2/.
+ * 3. Déployer → Gérer les déploiements → Modifier :
+ *    · Exécuter en tant que : MOI
+ *    · Accès : TOUT LE MONDE  (pas « Utilisateurs avec un compte Google »)
+ * 4. Test : {URL}/exec?action=ping → doit afficher du JSON sans connexion
  *
  * PIN admin : modifiable via setup() ou dans Propriétés du script (ADMIN_PIN)
  */

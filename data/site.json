@@ -21,7 +21,8 @@
   },
   "analytics": {
     "scriptUrl": "https://script.google.com/macros/s/AKfycbw3EVnulXtlcYVyjgjJH8lQLi5C2a9Ukzgb-FO8yhpg3PkvfYewasImug66grYaV1lq/exec",
-    "ownerEmail": "koyra.com@gmail.com"
+    "ownerEmail": "koyra.com@gmail.com",
+    "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI/edit"
   },
   "fr": {
     "meta": {
