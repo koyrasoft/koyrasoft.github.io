@@ -1,12 +1,13 @@
 /**
  * Koyrasoft — Analytics & compteur de visiteurs (Google Apps Script)
  *
- * INSTALLATION :
- * 1. https://script.google.com → Nouveau projet → coller ce fichier
- * 2. Exécuter une fois la fonction setup() → autoriser → noter l’ID du Google Sheet créé
- * 3. Déployer → Application Web → Exécuter : Moi · Accès : Tout le monde
+ * INSTALLATION (obligatoire avant l’admin) :
+ * 1. https://script.google.com → coller ce fichier
+ * 2. Sélectionner setup → ▶ Exécuter → Autoriser l’accès Google Sheets
+ * 3. Déployer → Application Web → Exécuter en tant que : MOI · Accès : Tout le monde
  * 4. Copier l’URL /exec dans data/site.json → analytics.scriptUrl
- * 5. Resynchroniser data/site-data.js
+ *
+ * ⚠️ Sans l’étape 2, l’admin affichera une erreur de permission.
  *
  * PIN admin : modifiable via setup() ou dans Propriétés du script (ADMIN_PIN)
  */
@@ -19,7 +20,8 @@ function setup() {
   if (!props.getProperty("ADMIN_PIN")) {
     props.setProperty("ADMIN_PIN", ADMIN_PIN_DEFAULT);
   }
-  const ss = getSpreadsheet_();
+
+  const ss = ensureSpreadsheet_();
   const url = ss.getUrl();
   Logger.log("Setup OK");
   Logger.log("ADMIN_PIN = " + props.getProperty("ADMIN_PIN"));
@@ -29,7 +31,7 @@ function setup() {
 
 /** Exécuter cette fonction pour afficher l’URL du Google Sheet dans les journaux. */
 function showSpreadsheetUrl() {
-  const url = getSpreadsheet_().getUrl();
+  const url = openSpreadsheet_().getUrl();
   Logger.log("Ouvrir : " + url);
   return url;
 }
@@ -40,6 +42,49 @@ function resetSpreadsheet() {
   const url = setup();
   Logger.log("Nouveau sheet créé : " + url);
   return url;
+}
+
+/** Crée le Google Sheet — à exécuter uniquement depuis l’éditeur Apps Script. */
+function ensureSpreadsheet_() {
+  const props = PropertiesService.getScriptProperties();
+  const id = props.getProperty("SPREADSHEET_ID");
+
+  if (id) {
+    try {
+      const ss = SpreadsheetApp.openById(id);
+      if (!ss.getSheetByName("Stats")) initSheets_(ss);
+      return ss;
+    } catch (err) {
+      Logger.log("Sheet introuvable, recréation… " + err);
+      props.deleteProperty("SPREADSHEET_ID");
+    }
+  }
+
+  const ss = SpreadsheetApp.create("Koyrasoft Analytics");
+  props.setProperty("SPREADSHEET_ID", ss.getId());
+  initSheets_(ss);
+  Logger.log("Google Sheet créé : " + ss.getUrl());
+  return ss;
+}
+
+/** Ouvre le Google Sheet existant — utilisé par l’application web déployée. */
+function openSpreadsheet_() {
+  const id = PropertiesService.getScriptProperties().getProperty("SPREADSHEET_ID");
+  if (!id) {
+    throw new Error(
+      "Google Sheet non configuré. Ouvrez script.google.com, exécutez setup() une fois (▶), autorisez l'accès, puis redéployez l'application web."
+    );
+  }
+
+  try {
+    const ss = SpreadsheetApp.openById(id);
+    if (!ss.getSheetByName("Stats")) initSheets_(ss);
+    return ss;
+  } catch (err) {
+    throw new Error(
+      "Google Sheet introuvable. Exécutez resetSpreadsheet() dans Apps Script, puis redéployez."
+    );
+  }
 }
 
 function doGet(e) {
@@ -56,8 +101,28 @@ function doGet(e) {
         return json_({ ok: true, service: "Koyrasoft Analytics" });
     }
   } catch (err) {
-    return json_({ ok: false, error: String(err.message || err) });
+    return json_({ ok: false, error: friendlyError_(err) });
   }
+}
+
+function friendlyError_(err) {
+  const msg = String(err.message || err);
+
+  if (
+    msg.indexOf("SpreadsheetApp.create") >= 0 ||
+    msg.indexOf("spreadsheets") >= 0 ||
+    msg.indexOf("authorization") >= 0 ||
+    msg.indexOf("権限") >= 0
+  ) {
+    return (
+      "Autorisation Google Sheets manquante. " +
+      "1) Ouvrez script.google.com avec koyra.com@gmail.com · " +
+      "2) Exécutez setup() (▶) et autorisez · " +
+      "3) Redéployez l'application web (Exécuter : Moi · Accès : Tout le monde)."
+    );
+  }
+
+  return msg;
 }
 
 function trackVisit_(params) {
@@ -76,7 +141,7 @@ function trackVisit_(params) {
   }
 
   try {
-    const ss = getSpreadsheet_();
+    const ss = openSpreadsheet_();
     const stats = ss.getSheetByName("Stats");
     const visitors = ss.getSheetByName("Visitors");
     const daily = ss.getSheetByName("Daily");
@@ -102,6 +167,9 @@ function trackVisit_(params) {
     trimLog_(log, MAX_VISIT_LOG);
 
     return { ok: true, newVisitor: isNew };
+  } catch (err) {
+    Logger.log("Track ignoré : " + err);
+    return { ok: true, skipped: true };
   } finally {
     lock.releaseLock();
   }
@@ -110,7 +178,7 @@ function trackVisit_(params) {
 function getStats_(params) {
   assertPin_(params.pin);
 
-  const ss = getSpreadsheet_();
+  const ss = openSpreadsheet_();
   const statsMap = readStatsMap_(ss.getSheetByName("Stats"));
   const daily = readDaily_(ss.getSheetByName("Daily"), 30);
   const recent = readRecentVisits_(ss.getSheetByName("Visits"), 25);
@@ -141,7 +209,7 @@ function getStats_(params) {
 function updateStats_(params) {
   assertPin_(params.pin);
 
-  const ss = getSpreadsheet_();
+  const ss = openSpreadsheet_();
   const stats = ss.getSheetByName("Stats");
 
   if (params.contactRequests !== undefined) {
@@ -158,30 +226,6 @@ function updateStats_(params) {
   }
 
   return getStats_(params);
-}
-
-function getSpreadsheet_() {
-  const props = PropertiesService.getScriptProperties();
-  let id = props.getProperty("SPREADSHEET_ID");
-
-  if (id) {
-    try {
-      const ss = SpreadsheetApp.openById(id);
-      if (!ss.getSheetByName("Stats")) initSheets_(ss);
-      return ss;
-    } catch (err) {
-      Logger.log("Spreadsheet introuvable (" + id + ") — recréation… " + err);
-      props.deleteProperty("SPREADSHEET_ID");
-      id = null;
-    }
-  }
-
-  const ss = SpreadsheetApp.create("Koyrasoft Analytics");
-  id = ss.getId();
-  props.setProperty("SPREADSHEET_ID", id);
-  initSheets_(ss);
-  Logger.log("Google Sheet créé : " + ss.getUrl());
-  return ss;
 }
 
 function initSheets_(ss) {
