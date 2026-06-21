@@ -7,7 +7,7 @@
   <title>Admin — Koyrasoft</title>
   <link rel="icon" type="image/png" href="logos/logo-k-brand.png">
   <style>
-    :root { --text:#f8fafc; --muted:#a9b4c7; --gold:#f2c768; --stroke:rgba(255,255,255,.12); --ok:#4ade80; --err:#ffb4b4; --warn:#f2c768; }
+    :root { --text:#f8fafc; --muted:#a9b4c7; --gold:#f2c768; --stroke:rgba(255,255,255,.12); --ok:#4ade80; --err:#ffb4b4; }
     * { box-sizing:border-box; margin:0; padding:0; }
     body {
       font-family:Inter,system-ui,sans-serif; min-height:100vh; padding:24px;
@@ -21,28 +21,23 @@
     h1 { font-size:1.35rem; margin-bottom:8px; }
     h2 { font-size:1rem; margin-bottom:12px; }
     p { color:var(--muted); line-height:1.6; margin-bottom:14px; font-size:.95rem; }
-    .btns { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0; }
     .btn {
       display:inline-block; padding:14px 20px; border-radius:999px;
       background:linear-gradient(135deg,var(--gold),#e7e9ee); color:#070707;
       font-weight:800; text-decoration:none; font-size:.9rem;
     }
-    .btn-secondary {
-      background:rgba(255,255,255,.06); border:1px solid var(--stroke); color:var(--text);
-    }
     .status { padding:12px 14px; border-radius:12px; font-size:.88rem; margin-bottom:16px; border:1px solid var(--stroke); }
     .status.ok { border-color:rgba(74,222,128,.35); color:var(--ok); }
     .status.err { border-color:rgba(255,107,107,.35); color:var(--err); }
-    .status.warn { border-color:rgba(242,199,104,.35); color:var(--warn); }
-    .warn-box {
+    .urgent {
       padding:16px; border-radius:12px; font-size:.88rem; line-height:1.65;
-      background:rgba(255,107,107,.08); border:1px solid rgba(255,107,107,.3); color:#ffb4b4;
+      background:rgba(255,107,107,.1); border:1px solid rgba(255,107,107,.35); color:#ffb4b4;
     }
-    .warn-box strong { color:#fff; }
+    .urgent strong { color:#fff; }
     ol { margin:10px 0 0 20px; }
     li { margin-bottom:8px; }
     .back { color:var(--gold); font-size:.88rem; text-decoration:none; }
-    code { font-size:.82rem; word-break:break-all; }
+    code { font-size:.82rem; word-break:break-all; background:rgba(0,0,0,.25); padding:2px 6px; border-radius:4px; }
     [hidden] { display:none !important; }
   </style>
 </head>
@@ -50,114 +45,103 @@
   <div class="shell">
     <main class="card">
       <h1>Administration Koyrasoft</h1>
-      <p>Statistiques &amp; visiteurs — invisible pour le public du site.</p>
-      <div id="status" class="status">Vérification…</div>
+      <div id="status" class="status">Diagnostic…</div>
 
-      <h2>Option 1 — Google Sheet</h2>
-      <p>Stats brutes — connectez-vous avec <strong id="ownerEmail">koyra.com@gmail.com</strong>.</p>
-      <div class="btns">
-        <a class="btn" id="sheetLink" href="#" target="_blank" rel="noopener">Ouvrir le Google Sheet →</a>
-      </div>
-      <p style="font-size:.85rem">Onglets : <code>Stats</code> · <code>Daily</code> · <code>Visits</code> · <code>Visitors</code></p>
-
-      <h2 style="margin-top:24px">Option 2 — Dashboard web</h2>
-      <p id="dashHint">Interface graphique avec PIN.</p>
-      <div class="btns">
-        <a class="btn btn-secondary" id="adminLink" href="#" target="_blank" rel="noopener">Ouvrir le dashboard →</a>
-      </div>
+      <h2>Google Sheet — vos statistiques</h2>
+      <p>Ouvrez avec le compte <strong>koyra.com@gmail.com</strong> uniquement.</p>
+      <a class="btn" id="sheetLink" href="#" target="_blank" rel="noopener">Ouvrir le Google Sheet →</a>
+      <p style="font-size:.85rem;margin-top:14px">Onglets : <code>Stats</code> · <code>Daily</code> · <code>Visits</code> · <code>Visitors</code></p>
     </main>
 
-    <aside class="card warn-box" id="deployHelp" hidden>
-      <strong id="deployTitle">Mise à jour requise</strong>
-      <p id="deployMsg" style="color:#ffb4b4;margin:10px 0 0"></p>
-      <ol id="deploySteps">
-        <li><a href="https://script.google.com" style="color:#f2c768">script.google.com</a> → projet Analytics</li>
-        <li>Collez <strong>tout</strong> le fichier <code>analytics.gs</code> du repo (version v5, admin intégré)</li>
-        <li><strong>Déployer</strong> → Gérer → ✏️ Modifier → <strong>Moi</strong> · <strong>Tout le monde</strong></li>
-        <li><strong>Nouvelle version</strong> → Déployer</li>
+    <aside class="card urgent" id="gasFix">
+      <strong>⚠️ Dashboard web indisponible</strong>
+      <p id="gasMsg" style="margin:10px 0"></p>
+      <ol>
+        <li>Ouvrez <a href="https://script.google.com" style="color:#f2c768">script.google.com</a></li>
+        <li>Sélectionnez <strong>tout</strong> le code → supprimez → collez <strong>tout</strong> <code>analytics.gs</code> (698 lignes du repo)</li>
+        <li>Ctrl+S Enregistrer</li>
+        <li><strong>Déployer</strong> → Gérer les déploiements → ✏️ → <strong>Nouvelle version</strong> → Déployer</li>
+        <li>Vérifiez : <code id="pingUrl"></code> doit afficher <code>"version":"2026-06-22-v5"</code></li>
       </ol>
-      <p style="margin-top:12px">Test : <code id="pingUrl"></code></p>
-      <p>PIN : <code>koyra2026</code></p>
+    </aside>
+
+    <aside class="card" id="dashReady" hidden>
+      <h2>Dashboard web</h2>
+      <p>Code v5 détecté — dashboard disponible.</p>
+      <a class="btn" id="adminLink" href="#" target="_blank" rel="noopener" style="margin-top:8px">Ouvrir le dashboard →</a>
+      <p style="font-size:.85rem;margin-top:12px">PIN : <code>koyra2026</code></p>
     </aside>
 
     <p style="margin-top:16px"><a class="back" href="index.html">← Retour au site</a></p>
   </div>
 
-  <script src="data/site-data.js?v=20260622"></script>
+  <script src="data/site-data.js?v=20260622b"></script>
   <script>
     (function () {
-      var FALLBACK =
+      var GAS =
         "https://script.google.com/macros/s/AKfycbzmvtJ9KsErE6WMf-ayY2vMpb2nloFpk6hQc89AygVki1iKTuz5sa2jW8pzWbCH3Hwt/exec";
       var cfg = (window.KOYRASOFT_SITE && window.KOYRASOFT_SITE.analytics) || {};
-      var base = (cfg.scriptUrl || FALLBACK).trim().replace(/\/u\/\d+\//, "/");
-      var owner = (cfg.ownerEmail || "koyra.com@gmail.com").trim();
-      var sheet = (cfg.spreadsheetUrl || "").trim();
-      var status = document.getElementById("status");
-      var deployHelp = document.getElementById("deployHelp");
+      var base = (cfg.scriptUrl || GAS).trim().replace(/\/u\/\d+\//, "/");
+      var sheet =
+        (cfg.spreadsheetUrl || "").trim() ||
+        "https://docs.google.com/spreadsheets/d/1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI/edit";
+      var owner = cfg.ownerEmail || "koyra.com@gmail.com";
 
-      document.getElementById("ownerEmail").textContent = owner;
       document.getElementById("pingUrl").textContent = base + "?action=ping";
 
-      function accountChooser(target) {
-        return (
-          "https://accounts.google.com/AccountChooser?Email=" +
-          encodeURIComponent(owner) +
-          "&continue=" +
-          encodeURIComponent(target)
-        );
-      }
+      /* Sheet : forcer le bon compte Google */
+      document.getElementById("sheetLink").href =
+        "https://accounts.google.com/AccountChooser?Email=" +
+        encodeURIComponent(owner) +
+        "&continue=" +
+        encodeURIComponent(sheet);
 
-      if (sheet) {
-        document.getElementById("sheetLink").href = accountChooser(sheet);
-      }
-
-      /* Dashboard public — lien direct (pas AccountChooser) */
       document.getElementById("adminLink").href = base + "?action=admin";
 
-      ping(base);
+      var status = document.getElementById("status");
+      var gasFix = document.getElementById("gasFix");
+      var dashReady = document.getElementById("dashReady");
 
-      function showDeploy(msg) {
-        deployHelp.hidden = false;
-        document.getElementById("deployMsg").textContent = msg;
-      }
+      Promise.all([
+        fetch(base + "?action=ping", { credentials: "omit" }).then(function (r) {
+          return r.json();
+        }),
+        fetch(base + "?action=admin", { credentials: "omit" }).then(function (r) {
+          return r.text();
+        }),
+      ])
+        .then(function (results) {
+          var ping = results[0];
+          var adminBody = results[1];
+          var isHtml = adminBody.trim().slice(0, 15).toLowerCase().indexOf("<!doctype") >= 0;
+          var hasV5 = ping.version && String(ping.version).indexOf("v5") >= 0;
 
-      function ping(url) {
-        fetch(url + "?action=ping", { method: "GET", credentials: "omit" })
-          .then(function (res) {
-            return res.json();
-          })
-          .then(function (data) {
-            if (!data || !data.ok) {
-              status.className = "status err";
-              status.textContent = "Script injoignable. Utilisez le Google Sheet (option 1).";
-              showDeploy("Le script ne répond pas correctement.");
-              return;
-            }
+          if (hasV5 && isHtml) {
+            status.className = "status ok";
+            status.textContent = "Tout est OK — Sheet et dashboard disponibles.";
+            gasFix.hidden = true;
+            dashReady.hidden = false;
+            return;
+          }
 
-            if (data.version && data.version.indexOf("v5") >= 0) {
-              status.className = "status ok";
-              status.textContent = "Script OK (" + data.version + "). Dashboard prêt.";
-              deployHelp.hidden = true;
-              return;
-            }
+          if (!isHtml) {
+            document.getElementById("gasMsg").textContent =
+              "Le lien dashboard renvoie du JSON au lieu d'une page web → le code dans Apps Script n'est PAS la version du repo. " +
+              "C'est la cause de l'erreur Google en japonais.";
+          } else {
+            document.getElementById("gasMsg").textContent =
+              "Mettez à jour analytics.gs (version v5) dans Apps Script.";
+          }
 
-            /* Public mais ancien code → dashboard casse (fichier Admin manquant) */
-            status.className = "status warn";
-            status.textContent =
-              "Script public mais code ancien. Collez analytics.gs v5 dans Apps Script, puis redéployez.";
-            document.getElementById("dashHint").textContent =
-              "⚠️ Le dashboard ne marchera qu'après mise à jour de analytics.gs (admin intégré).";
-            showDeploy(
-              "Votre déploiement répond, mais le code est ancien (pas de version v5). " +
-                "C'est pourquoi le dashboard affiche une erreur Google. Collez le analytics.gs du repo et redéployez."
-            );
-          })
-          .catch(function () {
-            status.className = "status err";
-            status.textContent = "Script inaccessible. Utilisez le Google Sheet (option 1).";
-            showDeploy("Accès : « Tout le monde » requis dans le déploiement Google.");
-          });
-      }
+          status.className = "status err";
+          status.textContent =
+            "Utilisez le Google Sheet ci-dessus. Dashboard : après mise à jour de analytics.gs.";
+        })
+        .catch(function () {
+          status.className = "status err";
+          status.textContent = "Script Google injoignable — utilisez le Google Sheet.";
+          document.getElementById("gasMsg").textContent = "Vérifiez le déploiement (Accès : Tout le monde).";
+        });
     })();
   </script>
 </body>
