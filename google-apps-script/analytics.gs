@@ -14,7 +14,7 @@
 
 const ADMIN_PIN_DEFAULT = "koyra2026";
 const MAX_VISIT_LOG = 500;
-const SCRIPT_VERSION = "2026-06-22-v2";
+const SCRIPT_VERSION = "2026-06-22-v3";
 
 /** ID du Google Sheet créé par setup() — secours si les propriétés du script sont vides. */
 const SPREADSHEET_ID = "1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI";
@@ -118,22 +118,30 @@ function saveSpreadsheetId_(id) {
 
 function doGet(e) {
   const action = (e.parameter.action || "").trim();
+  let payload;
+
   try {
     switch (action) {
       case "track":
-        return json_(trackVisit_(e.parameter));
+        payload = trackVisit_(e.parameter);
+        break;
       case "stats":
-        return json_(getStats_(e.parameter));
+        payload = getStats_(e.parameter);
+        break;
       case "update":
-        return json_(updateStats_(e.parameter));
+        payload = updateStats_(e.parameter);
+        break;
       case "ping":
-        return json_(ping_());
+        payload = ping_();
+        break;
       default:
-        return json_({ ok: true, service: "Koyrasoft Analytics", version: SCRIPT_VERSION });
+        payload = { ok: true, service: "Koyrasoft Analytics", version: SCRIPT_VERSION };
     }
   } catch (err) {
-    return json_({ ok: false, error: friendlyError_(err) });
+    payload = { ok: false, error: friendlyError_(err) };
   }
+
+  return respond_(payload, e);
 }
 
 function friendlyError_(err) {
@@ -406,6 +414,20 @@ function assertPin_(pin) {
   if (!pin || String(pin) !== expected) {
     throw new Error("Code PIN incorrect");
   }
+}
+
+function respond_(payload, e) {
+  const json = JSON.stringify(payload);
+  const callback =
+    e && e.parameter && e.parameter.callback ? String(e.parameter.callback).trim() : "";
+
+  if (callback && /^[a-zA-Z_$][\w.$]*$/.test(callback)) {
+    return ContentService.createTextOutput(callback + "(" + json + ")").setMimeType(
+      ContentService.MimeType.JAVASCRIPT
+    );
+  }
+
+  return ContentService.createTextOutput(json).setMimeType(ContentService.MimeType.JSON);
 }
 
 function json_(payload) {

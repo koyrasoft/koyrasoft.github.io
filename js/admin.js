@@ -86,7 +86,9 @@ function setLoginError(message) {
   }
   loginError.hidden = false;
   const isDeployError =
-    /SpreadsheetApp|spreadsheets|権限|Exécuter en tant|Moi|Déploiement/i.test(message);
+    /SpreadsheetApp|spreadsheets|権限|Exécuter en tant|Moi|Déploiement|NetworkError|Connexion impossible|Délai dépassé/i.test(
+      message
+    );
   if (isDeployError) {
     loginError.innerHTML =
       message +
@@ -111,15 +113,63 @@ function setFormStatus(message, isError) {
   formStatus.textContent = message;
 }
 
-async function fetchStats(pin) {
+function gasRequest(params) {
   const scriptUrl = getAnalyticsUrl();
   if (!scriptUrl) {
-    throw new Error("URL analytics manquante. Ajoutez analytics.scriptUrl dans site.json.");
+    return Promise.reject(new Error("URL analytics manquante. Ajoutez analytics.scriptUrl dans site.json."));
   }
 
-  const params = new URLSearchParams({ action: "stats", pin });
-  const res = await fetch(`${scriptUrl}?${params.toString()}`);
-  const data = await res.json();
+  return new Promise((resolve, reject) => {
+    const callbackName =
+      "koyrasoftCb_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8);
+    const urlParams = new URLSearchParams(params);
+    urlParams.set("callback", callbackName);
+
+    const script = document.createElement("script");
+    let settled = false;
+
+    const timeout = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      reject(
+        new Error(
+          "Délai dépassé. Vérifiez le déploiement Apps Script : Exécuter « Moi » · Accès « Tout le monde »."
+        )
+      );
+    }, 20000);
+
+    function cleanup() {
+      clearTimeout(timeout);
+      delete window[callbackName];
+      script.remove();
+    }
+
+    window[callbackName] = (data) => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      resolve(data);
+    };
+
+    script.onerror = () => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      reject(
+        new Error(
+          "Connexion impossible au script Google. Collez la dernière version de analytics.gs, redéployez (Accès : Tout le monde), puis réessayez."
+        )
+      );
+    };
+
+    script.src = `${scriptUrl}?${urlParams.toString()}`;
+    document.body.appendChild(script);
+  });
+}
+
+async function fetchStats(pin) {
+  const data = await gasRequest({ action: "stats", pin });
 
   if (!data.ok) {
     throw new Error(data.error || "Impossible de charger les statistiques.");
@@ -129,8 +179,7 @@ async function fetchStats(pin) {
 }
 
 async function saveStats(pin, payload) {
-  const scriptUrl = getAnalyticsUrl();
-  const params = new URLSearchParams({
+  const data = await gasRequest({
     action: "update",
     pin,
     contactRequests: String(payload.contactRequests),
@@ -138,9 +187,6 @@ async function saveStats(pin, payload) {
     activeClients: String(payload.activeClients),
     notes: payload.notes,
   });
-
-  const res = await fetch(`${scriptUrl}?${params.toString()}`);
-  const data = await res.json();
 
   if (!data.ok) {
     throw new Error(data.error || "Échec de l'enregistrement.");
