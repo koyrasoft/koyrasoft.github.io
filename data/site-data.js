@@ -19,6 +19,9 @@ window.KOYRASOFT_SITE={
     },
     "formScriptUrl": "https://script.google.com/macros/s/AKfycbzYf9XCFJy4aU0k8snn-YVxHsTlfw8NFb99ZWGgBbJzEWEBI2c98c_ncZqljW-kWWlK/exec"
   },
+  "analytics": {
+    "scriptUrl": ""
+  },
   "fr": {
     "meta": {
       "title": "Koyrasoft — Développement web, mobile & logiciels sur mesure",
