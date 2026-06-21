@@ -7,7 +7,7 @@
   <title>Admin — Koyrasoft</title>
   <link rel="icon" type="image/png" href="logos/logo-k-brand.png">
   <style>
-    :root { --text:#f8fafc; --muted:#a9b4c7; --gold:#f2c768; --stroke:rgba(255,255,255,.12); }
+    :root { --text:#f8fafc; --muted:#a9b4c7; --gold:#f2c768; --stroke:rgba(255,255,255,.12); --ok:#4ade80; --err:#ffb4b4; }
     * { box-sizing:border-box; margin:0; padding:0; }
     body {
       font-family:Inter,system-ui,sans-serif;
@@ -15,7 +15,7 @@
       background:linear-gradient(180deg,#05070d,#070915); color:var(--text);
     }
     .card {
-      max-width:520px; width:100%; padding:32px; border-radius:24px;
+      max-width:560px; width:100%; padding:32px; border-radius:24px;
       background:rgba(255,255,255,.07); border:1px solid var(--stroke);
     }
     h1 { font-size:1.35rem; margin-bottom:8px; }
@@ -25,7 +25,12 @@
       background:linear-gradient(135deg,var(--gold),#e7e9ee); color:#070707;
       font-weight:800; text-decoration:none; font-size:.95rem;
     }
-    .btn:hover { opacity:.92; }
+    .status {
+      margin:16px 0; padding:12px 14px; border-radius:12px; font-size:.88rem;
+      background:rgba(255,255,255,.04); border:1px solid var(--stroke);
+    }
+    .status.ok { border-color:rgba(74,222,128,.35); color:var(--ok); }
+    .status.err { border-color:rgba(255,107,107,.35); color:var(--err); }
     .note {
       margin-top:20px; padding:14px; border-radius:12px; font-size:.85rem;
       background:rgba(60,121,255,.1); border:1px solid rgba(60,121,255,.25); color:#b8d0ff;
@@ -38,41 +43,88 @@
 <body>
   <main class="card">
     <h1>Administration Koyrasoft</h1>
-    <p>Tableau de bord privé (statistiques &amp; visiteurs). Rien n’est affiché aux visiteurs du site.</p>
-    <p>Cliquez ci-dessous pour ouvrir l’admin hébergé sur Google Apps Script :</p>
+    <p>Tableau de bord privé — statistiques &amp; visiteurs. Rien n’est affiché sur le site public.</p>
+    <div id="status" class="status">Vérification du script Google…</div>
+    <p>Ouvrez l’admin avec le compte <strong id="ownerEmail">koyra.com@gmail.com</strong> :</p>
     <a class="btn" id="adminLink" href="#" target="_blank" rel="noopener noreferrer">Ouvrir le tableau de bord →</a>
-    <p class="note" id="help" hidden></p>
+    <div class="note">
+      <strong>Erreur Google « fichier introuvable » ?</strong>
+      <ol>
+        <li>Vous êtes sur le <strong>mauvais compte Google</strong> (souvent le 2ᵉ compte → <code>/u/2/</code> dans l’URL).</li>
+        <li>Utilisez le bouton ci-dessus — il force <strong>koyra.com@gmail.com</strong>.</li>
+        <li>Dans Apps Script : Déployer → <strong>Exécuter : Moi</strong> · <strong>Accès : Tout le monde</strong> · nouvelle version.</li>
+        <li>Collez la dernière version de <code>analytics.gs</code> (v5) avant de redéployer.</li>
+      </ol>
+      <p style="margin-top:10px">PIN par défaut : <code>koyra2026</code></p>
+    </div>
     <a class="back" href="index.html">← Retour au site</a>
   </main>
 
   <script src="data/site-data.js"></script>
   <script>
     (function () {
-      var base = (window.KOYRASOFT_SITE && window.KOYRASOFT_SITE.analytics && window.KOYRASOFT_SITE.analytics.scriptUrl || "").trim();
+      var cfg = (window.KOYRASOFT_SITE && window.KOYRASOFT_SITE.analytics) || {};
+      var base = (cfg.scriptUrl || "").trim();
+      var owner = (cfg.ownerEmail || "koyra.com@gmail.com").trim();
       var link = document.getElementById("adminLink");
-      var help = document.getElementById("help");
+      var status = document.getElementById("status");
+
+      document.getElementById("ownerEmail").textContent = owner;
 
       if (!base) {
+        status.className = "status err";
+        status.textContent = "URL analytics manquante dans site.json.";
         link.hidden = true;
-        help.hidden = false;
-        help.textContent = "URL analytics manquante dans site.json.";
         return;
       }
 
-      /* Pas de redirection auto — lien explicite, compte Google #0 (koyra.com@gmail.com) */
-      var adminUrl = base.replace(/\/u\/\d+\//, "/") + (base.indexOf("?") >= 0 ? "&" : "?") + "action=admin&authuser=0";
-      link.href = adminUrl;
+      var adminTarget = base.replace(/\/u\/\d+\//, "/") + "?action=admin";
+      var openUrl =
+        "https://accounts.google.com/AccountChooser?Email=" +
+        encodeURIComponent(owner) +
+        "&continue=" +
+        encodeURIComponent(adminTarget);
 
-      help.hidden = false;
-      help.innerHTML =
-        "<strong>Si vous voyez une erreur Google (fichier introuvable) :</strong>" +
-        "<ol>" +
-        "<li>Connectez-vous avec <strong>koyra.com@gmail.com</strong> (fenêtre privée recommandée).</li>" +
-        "<li>Dans Apps Script : Déployer → <strong>Exécuter : Moi</strong> · <strong>Accès : Tout le monde</strong>.</li>" +
-        "<li>Collez la dernière version de <code>analytics.gs</code> et redéployez une nouvelle version.</li>" +
-        "</ol>" +
-        "<p style='margin-top:10px'>Lien direct : <code id='rawUrl'></code></p>";
-      document.getElementById("rawUrl").textContent = adminUrl;
+      link.href = openUrl;
+
+      function ping() {
+        var cb = "koyrasoftPing_" + Date.now();
+        var timeout = setTimeout(function () {
+          cleanup();
+          status.className = "status err";
+          status.textContent =
+            "Script Google injoignable. Redéployez analytics.gs (Accès : Tout le monde).";
+        }, 12000);
+
+        function cleanup() {
+          clearTimeout(timeout);
+          delete window[cb];
+          script.remove();
+        }
+
+        window[cb] = function (data) {
+          cleanup();
+          if (data && data.ok && data.version) {
+            status.className = "status ok";
+            status.textContent = "Script OK (version " + data.version + "). Cliquez le bouton admin.";
+          } else {
+            status.className = "status err";
+            status.textContent = "Réponse inattendue du script. Mettez à jour analytics.gs.";
+          }
+        };
+
+        var script = document.createElement("script");
+        script.onerror = function () {
+          cleanup();
+          status.className = "status err";
+          status.textContent =
+            "Script inaccessible. Déployez avec Accès « Tout le monde » ou connectez-vous en " + owner + ".";
+        };
+        script.src = base.replace(/\/u\/\d+\//, "/") + "?action=ping&callback=" + cb;
+        document.body.appendChild(script);
+      }
+
+      ping();
     })();
   </script>
 </body>

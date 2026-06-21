@@ -20,7 +20,8 @@ window.KOYRASOFT_SITE={
     "formScriptUrl": "https://script.google.com/macros/s/AKfycbzYf9XCFJy4aU0k8snn-YVxHsTlfw8NFb99ZWGgBbJzEWEBI2c98c_ncZqljW-kWWlK/exec"
   },
   "analytics": {
-    "scriptUrl": "https://script.google.com/macros/s/AKfycbw3EVnulXtlcYVyjgjJH8lQLi5C2a9Ukzgb-FO8yhpg3PkvfYewasImug66grYaV1lq/exec"
+    "scriptUrl": "https://script.google.com/macros/s/AKfycbw3EVnulXtlcYVyjgjJH8lQLi5C2a9Ukzgb-FO8yhpg3PkvfYewasImug66grYaV1lq/exec",
+    "ownerEmail": "koyra.com@gmail.com"
   },
   "fr": {
     "meta": {
