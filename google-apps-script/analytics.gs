@@ -19,9 +19,27 @@ function setup() {
   if (!props.getProperty("ADMIN_PIN")) {
     props.setProperty("ADMIN_PIN", ADMIN_PIN_DEFAULT);
   }
-  getSpreadsheet_();
-  Logger.log("Setup OK. ADMIN_PIN = " + props.getProperty("ADMIN_PIN"));
-  Logger.log("Spreadsheet ID = " + props.getProperty("SPREADSHEET_ID"));
+  const ss = getSpreadsheet_();
+  const url = ss.getUrl();
+  Logger.log("Setup OK");
+  Logger.log("ADMIN_PIN = " + props.getProperty("ADMIN_PIN"));
+  Logger.log("Spreadsheet URL = " + url);
+  return url;
+}
+
+/** Exécuter cette fonction pour afficher l’URL du Google Sheet dans les journaux. */
+function showSpreadsheetUrl() {
+  const url = getSpreadsheet_().getUrl();
+  Logger.log("Ouvrir : " + url);
+  return url;
+}
+
+/** Supprime l’ID enregistré et recrée un nouveau Google Sheet (si l’ancien est perdu). */
+function resetSpreadsheet() {
+  PropertiesService.getScriptProperties().deleteProperty("SPREADSHEET_ID");
+  const url = setup();
+  Logger.log("Nouveau sheet créé : " + url);
+  return url;
 }
 
 function doGet(e) {
@@ -115,6 +133,7 @@ function getStats_(params) {
     notes: statsMap.notes || "",
     recentVisits: recent,
     daily,
+    spreadsheetUrl: ss.getUrl(),
     updatedAt: new Date().toISOString(),
   };
 }
@@ -145,15 +164,23 @@ function getSpreadsheet_() {
   const props = PropertiesService.getScriptProperties();
   let id = props.getProperty("SPREADSHEET_ID");
 
-  if (!id) {
-    const ss = SpreadsheetApp.create("Koyrasoft Analytics");
-    id = ss.getId();
-    props.setProperty("SPREADSHEET_ID", id);
-    initSheets_(ss);
+  if (id) {
+    try {
+      const ss = SpreadsheetApp.openById(id);
+      if (!ss.getSheetByName("Stats")) initSheets_(ss);
+      return ss;
+    } catch (err) {
+      Logger.log("Spreadsheet introuvable (" + id + ") — recréation… " + err);
+      props.deleteProperty("SPREADSHEET_ID");
+      id = null;
+    }
   }
 
-  const ss = SpreadsheetApp.openById(id);
-  if (!ss.getSheetByName("Stats")) initSheets_(ss);
+  const ss = SpreadsheetApp.create("Koyrasoft Analytics");
+  id = ss.getId();
+  props.setProperty("SPREADSHEET_ID", id);
+  initSheets_(ss);
+  Logger.log("Google Sheet créé : " + ss.getUrl());
   return ss;
 }
 

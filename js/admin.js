@@ -154,6 +154,15 @@ function renderStats(data) {
 
   document.getElementById("updatedAt").textContent = "Dernière mise à jour : " + formatDateTime(data.updatedAt);
 
+  const sheetLink = document.getElementById("sheetLink");
+  const sheetUrl = document.getElementById("sheetUrl");
+  if (data.spreadsheetUrl && sheetLink && sheetUrl) {
+    sheetUrl.href = data.spreadsheetUrl;
+    sheetLink.hidden = false;
+  } else if (sheetLink) {
+    sheetLink.hidden = true;
+  }
+
   renderChart(data.daily || []);
   renderVisits(data.recentVisits || []);
 }
