@@ -7,7 +7,7 @@
   <title>Admin — Koyrasoft</title>
   <link rel="icon" type="image/png" href="logos/logo-k-brand.png">
   <style>
-    :root { --text:#f8fafc; --muted:#a9b4c7; --gold:#f2c768; --stroke:rgba(255,255,255,.12); --err:#ffb4b4; }
+    :root { --text:#f8fafc; --muted:#a9b4c7; --gold:#f2c768; --stroke:rgba(255,255,255,.12); --ok:#4ade80; --err:#ffb4b4; }
     * { box-sizing:border-box; margin:0; padding:0; }
     body { font-family:Inter,system-ui,sans-serif; min-height:100vh; padding:24px; background:linear-gradient(180deg,#05070d,#070915); color:var(--text); }
     .shell { max-width:640px; margin:0 auto; }
@@ -15,10 +15,12 @@
     h1 { font-size:1.3rem; margin-bottom:12px; }
     h2 { font-size:1rem; margin:20px 0 10px; }
     p, li { color:var(--muted); line-height:1.65; font-size:.92rem; margin-bottom:10px; }
-    .btn { display:inline-block; margin-top:8px; padding:14px 20px; border-radius:999px; background:linear-gradient(135deg,var(--gold),#e7e9ee); color:#070707; font-weight:800; text-decoration:none; font-size:.9rem; }
-    .urgent { padding:16px; border-radius:12px; background:rgba(255,107,107,.1); border:1px solid rgba(255,107,107,.35); color:var(--err); font-size:.88rem; line-height:1.65; }
-    .urgent strong { color:#fff; }
-    ol { margin:8px 0 0 20px; }
+    .btns { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .btn { display:inline-block; padding:14px 20px; border-radius:999px; background:linear-gradient(135deg,var(--gold),#e7e9ee); color:#070707; font-weight:800; text-decoration:none; font-size:.9rem; }
+    .btn-secondary { background:rgba(255,255,255,.06); border:1px solid var(--stroke); color:var(--text); }
+    .status { padding:12px 14px; border-radius:12px; font-size:.88rem; margin-bottom:16px; border:1px solid var(--stroke); }
+    .status.ok { border-color:rgba(74,222,128,.35); color:var(--ok); }
+    .note { padding:14px; border-radius:12px; font-size:.85rem; color:var(--err); background:rgba(255,107,107,.08); border:1px solid rgba(255,107,107,.25); line-height:1.6; }
     code { font-size:.8rem; word-break:break-all; background:rgba(0,0,0,.3); padding:2px 6px; border-radius:4px; color:#f2c768; }
     .back { color:var(--gold); font-size:.88rem; text-decoration:none; }
   </style>
@@ -27,34 +29,57 @@
   <div class="shell">
     <main class="card">
       <h1>Administration Koyrasoft</h1>
+      <div id="status" class="status">Vérification…</div>
 
-      <div class="urgent">
-        <strong>Erreur Google en japonais = mauvais compte Google</strong>
-        <p style="margin-top:8px;color:#ffb4b4">Le fichier appartient à <strong>koyra.com@gmail.com</strong>. Si vous êtes connecté avec un autre compte (interface en japonais), Google affiche « fichier introuvable ».</p>
+      <h2>Dashboard web</h2>
+      <p>Interface graphique — PIN : <code>koyra2026</code></p>
+      <div class="btns">
+        <a class="btn" id="adminLink" href="#">Ouvrir le dashboard →</a>
       </div>
 
-      <h2>Étape 1 — Un seul compte Google</h2>
-      <ol>
-        <li>Déconnectez-vous de <strong>tous</strong> vos comptes Google</li>
-        <li>Reconnectez-vous <strong>uniquement</strong> avec <code>koyra.com@gmail.com</code></li>
-      </ol>
+      <h2>Google Sheet</h2>
+      <p>Données brutes — connectez-vous avec <code>koyra.com@gmail.com</code></p>
+      <div class="btns">
+        <a class="btn btn-secondary" id="sheetLink" href="#">Ouvrir le Google Sheet →</a>
+      </div>
 
-      <h2>Étape 2 — Ouvrir le Google Sheet</h2>
-      <p>Copiez-collez ce lien dans la barre d'adresse (connecté en koyra.com@gmail.com) :</p>
-      <p><code id="sheetUrl">https://docs.google.com/spreadsheets/d/1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI/edit</code></p>
-      <a class="btn" id="sheetLink" href="https://docs.google.com/spreadsheets/d/1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI/edit" target="_blank" rel="noopener">Ouvrir le Google Sheet →</a>
-
-      <h2>Étape 3 — Si le Sheet ne s'ouvre toujours pas</h2>
-      <p>Dans <a href="https://script.google.com" style="color:#f2c768">script.google.com</a> (compte koyra.com@gmail.com) :</p>
-      <ol>
-        <li>Collez <strong>tout</strong> <code>analytics.gs</code> (698 lignes) — supprimez les autres fichiers .gs du projet</li>
-        <li>Exécutez <code>fixSheetAccess()</code> → autoriser → regardez le journal</li>
-        <li>Un email avec le lien sera envoyé à koyra.com@gmail.com</li>
-        <li>Redéployez : <strong>Moi</strong> · <strong>Tout le monde</strong> · nouvelle version</li>
-      </ol>
+      <div class="note" style="margin-top:20px">
+        <strong>Erreur en japonais ?</strong> Déconnectez-vous de tous vos comptes Google, reconnectez-vous uniquement avec <code>koyra.com@gmail.com</code>, puis réessayez.
+      </div>
     </main>
 
     <p style="margin-top:16px"><a class="back" href="index.html">← Retour au site</a></p>
   </div>
+
+  <script src="data/site-data.js?v=20260622c"></script>
+  <script>
+    (function () {
+      var cfg = (window.KOYRASOFT_SITE && window.KOYRASOFT_SITE.analytics) || {};
+      var gas =
+        cfg.scriptUrl ||
+        "https://script.google.com/macros/s/AKfycby-So0a_sizZ656kRsC92uGcsQHYRBVAfYr9T6MxJ8l7vAJErYTZFYrMDoVqmW-Jy2c/exec";
+      var sheet =
+        cfg.spreadsheetUrl ||
+        "https://docs.google.com/spreadsheets/d/1gF-mA0787YEEQvXsnT5vjUS_03B2-vyZoVRnbgJd6GI/edit";
+
+      document.getElementById("adminLink").href = gas + "?action=admin";
+      document.getElementById("sheetLink").href = sheet;
+
+      fetch(gas + "?action=ping", { credentials: "omit" })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          var el = document.getElementById("status");
+          if (d && d.ok && d.version) {
+            el.className = "status ok";
+            el.textContent = "Script OK — " + d.version;
+          } else {
+            el.textContent = "Script actif.";
+          }
+        })
+        .catch(function () {
+          document.getElementById("status").textContent = "Script injoignable.";
+        });
+    })();
+  </script>
 </body>
 </html>
